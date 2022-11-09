@@ -5,13 +5,11 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
 
-# Import local libraries
-#from threshold_prediction_plot import threshold_prediction_plot, sigmoid
-
 # Configure Notebook
 import warnings
 warnings.filterwarnings('ignore')
 
+'''Extracting data from goodcarbadcar HTML tables for 2019, 2020, and 2021 and merging it into one dataframe'''
 
 from requests import get
 
@@ -77,15 +75,15 @@ for row in table_rows_2019:
     december.append(int(dec_sum.replace(',','')))
 
 # make dataframe containing with columns corresponding to the lists
-data_2019 = pd.DataFrame({'model_name': model_names, 'January': january,
-                          'February': february, 'March': march,'April': april,
-                          'May':may, 'June':june, 'July':july,'August':august,
-                          'September': september, 'October': october,
-                          'November': november,'December': december})
+car_sales_2019 = pd.DataFrame({'make_and_model': model_names, 'January 2019': january,
+                          'February 2019': february, 'March 2019': march,'April 2019': april,
+                          'May 2019':may, 'June 2019':june, 'July 2019':july,'August 2019':august,
+                          'September 2019': september, 'October 2019': october,
+                          'November 2019': november,'December 2019': december}).replace("-"," ")
 
-monthly_sums_2019 = list(data_2019.sum(axis = 0)[1:])
+monthly_sums_2019 = list(car_sales_2019.sum(axis = 0)[1:])
 
-print(data_2019,monthly_sums_2019)
+#print(car_sales_2019,monthly_sums_2019)
 
 ##################################################################################
 #2020 data
@@ -150,15 +148,15 @@ for row in table_rows_2020:
     december.append(int(dec_sum.replace(',','')))
 
 # make dataframe containing with columns corresponding to the lists
-data_2020 = pd.DataFrame({'model_name': model_names, 'January': january,
-                          'February': february, 'March': march,'April': april,
-                          'May':may, 'June':june, 'July':july,'August':august,
-                          'September': september, 'October': october,
-                          'November': november,'December': december})
+car_sales_2020 = pd.DataFrame({'make_and_model': model_names, 'January 2020': january,
+                          'February 2020': february, 'March 2020': march,'April 2020': april,
+                          'May 2020':may, 'June 2020':june, 'July 2020':july,'August 2020':august,
+                          'September 2020': september, 'October 2020': october,
+                          'November 2020': november,'December 2020': december}).replace("-"," ")
 
-monthly_sums_2020 = list(data_2020.sum(axis = 0)[1:])
+monthly_sums_2020 = list(car_sales_2020.sum(axis = 0)[1:])
 
-print(data_2020,monthly_sums_2020)
+#print(car_sales_2020,monthly_sums_2020)
 
 ##################################################################################
 #2021 data
@@ -223,12 +221,59 @@ for row in table_rows_2021:
     december.append(int(dec_sum.replace(',','')))
 
 # make dataframe containing with columns corresponding to the lists
-data_2021 = pd.DataFrame({'model_name': model_names, 'January': january,
-                          'February': february, 'March': march,'April': april,
-                          'May':may, 'June':june, 'July':july,'August':august,
-                          'September': september, 'October': october,
-                          'November': november,'December': december})
+car_sales_2021 = pd.DataFrame({'make_and_model': model_names, 'January 2021': january,
+                          'February 2021': february, 'March 2021': march,'April 2021': april,
+                          'May 2021':may, 'June 2021':june, 'July 2021':july,'August 2021':august,
+                          'September 2021': september, 'October 2021': october,
+                          'November 2021': november,'December 2021': december})
 
-monthly_sums_2021 = list(data_2021.sum(axis = 0)[1:])
+monthly_sums_2021 = list(car_sales_2021.sum(axis = 0)[1:])
 
-print(data_2021,monthly_sums_2021)
+#print(car_sales_2021,monthly_sums_2021)
+
+##################################################################################
+
+#Merging 2019, 2020, and 2021 car sale data into one dataframe
+car_sales = car_sales_2019.merge(right = car_sales_2020,
+                                 how = 'outer',
+                                 on = 'make_and_model').merge(right = car_sales_2021,
+                                                          how = 'outer',
+                                                          on = 'make_and_model')
+
+##################################################################################
+'''This section of the code will merge the car_sales data with the car_models data, such that every car make and model
+sold will be placed in a car body category'''
+#Car model csv file
+car_models = pd.read_csv("Car_Model_List.csv")
+
+months_for_analysis = ['January 2019', 'February 2019', 'March 2019', 'April 2019', 'May 2019', 'June 2019',
+                       'July 2019', 'August 2019', 'September 2019', 'October 2019', 'November 2019', 'December 2019',
+                       'January 2020', 'February 2020', 'March 2020', 'April 2020', 'May 2020', 'June 2020',
+                       'July 2020', 'August 2020', 'September 2020', 'October 2020', 'November 2020', 'December 2020',
+                       'January 2021', 'February 2021', 'March 2021', 'April 2021', 'May 2021', 'June 2021',
+                       'July 2021', 'August 2021', 'September 2021', 'October 2021', 'November 2021', 'December 2021']
+
+#Creating a single column for make and model, to match the format of the car_sales column
+car_models["make_and_model"] = car_models["Make"].astype(str) + " " + car_models["Model"].astype(str).str.replace("-"," ")
+
+#Removing duplicates since the same make and model is present for multiple years in the car_models dataframe
+car_models = car_models.loc[:, ["make_and_model", "Category"]].drop_duplicates()
+
+#Preparing car_sales to match the format of car_models
+car_sales["make_and_model"] = car_sales["make_and_model"].str.replace("-"," ")
+
+#Merging car_sales and car_models by make and model
+car_sales_by_size = car_sales.merge(right=car_models,
+                                    how='outer',
+                                    on='make_and_model')
+
+#Filters out the vehicle makes and models that were not sold in any month from 2019-2021 in Canada
+car_sales_by_size = car_sales_by_size[~car_sales_by_size[months_for_analysis].isna().all(1) | (car_sales_by_size[months_for_analysis]==0).all(1)]
+
+
+missing_cars = (car_sales_by_size[car_sales_by_size["Category"].isnull()])["make_and_model"].to_list()
+print(missing_cars)
+print(len(missing_cars))
+
+
+
