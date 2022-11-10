@@ -1,4 +1,5 @@
 # Import 3rd party libraries
+import csv
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -265,8 +266,8 @@ def make_and_model_canonicalization(car_sales, car_models):
         '''
 
     # Creating a single column for make and model, to match the format of the car_sales column
-    car_models["make_and_model"] = car_models["Make"].astype(str).str.lower() + " " + car_models["Model"].astype(str).str.\
-        replace("-", " ").str.lower()
+    car_models["make_and_model"] = car_models["Make"].astype(str).str.replace("-", " ").str.lower() + " " + \
+                                   car_models["Model"].astype(str).str.replace("-", " ").str.lower()
 
     car_sales["make_and_model"] = car_sales["make_and_model"].str.replace("-"," ").str.lower()
     # Removing duplicates since the same make and model is present for multiple years in the car_models dataframe
@@ -297,6 +298,10 @@ missing_cars = (car_sales_by_size[car_sales_by_size["Category"].isnull()])["make
 print(missing_cars)
 print(len(missing_cars))
 print(car_sales_list)
+
+car_models.to_csv('Car_Model_List_updated.csv', encoding='utf-8', index=False)
+car_sales.to_csv('Car_Sales_2019_2021.csv', encoding='utf-8', index=False)
+car_sales_by_size.to_csv('Merged Car Sales List.csv', encoding='utf-8', index=False)
 
 
 
