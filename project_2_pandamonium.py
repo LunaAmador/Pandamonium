@@ -82,7 +82,7 @@ car_sales_2019 = pd.DataFrame({'make_and_model': model_names, 'January 2019': ja
                           'September 2019': september, 'October 2019': october,
                           'November 2019': november,'December 2019': december}).replace("-"," ")
 
-monthly_sums_2019 = list(car_sales_2019.sum(axis = 0)[1:])
+#monthly_sums_2019 = list(car_sales_2019.sum(axis = 0)[1:])
 
 #print(car_sales_2019,monthly_sums_2019)
 
@@ -155,7 +155,7 @@ car_sales_2020 = pd.DataFrame({'make_and_model': model_names, 'January 2020': ja
                           'September 2020': september, 'October 2020': october,
                           'November 2020': november,'December 2020': december}).replace("-"," ")
 
-monthly_sums_2020 = list(car_sales_2020.sum(axis = 0)[1:])
+#monthly_sums_2020 = list(car_sales_2020.sum(axis = 0)[1:])
 
 #print(car_sales_2020,monthly_sums_2020)
 
@@ -228,7 +228,7 @@ car_sales_2021 = pd.DataFrame({'make_and_model': model_names, 'January 2021': ja
                           'September 2021': september, 'October 2021': october,
                           'November 2021': november,'December 2021': december})
 
-monthly_sums_2021 = list(car_sales_2021.sum(axis = 0)[1:])
+#monthly_sums_2021 = list(car_sales_2021.sum(axis = 0)[1:])
 
 #print(car_sales_2021,monthly_sums_2021)
 
@@ -246,6 +246,9 @@ car_sales = car_sales_2019.merge(right = car_sales_2020,
 sold will be placed in a car body category'''
 #Car model csv file
 car_models = pd.read_csv("Car_Model_List.csv")
+missing_car_models = pd.read_csv("missing_models.csv")
+
+car_models = pd.concat([car_models, missing_car_models], axis=0)
 
 months_for_analysis = ['January 2019', 'February 2019', 'March 2019', 'April 2019', 'May 2019', 'June 2019',
                        'July 2019', 'August 2019', 'September 2019', 'October 2019', 'November 2019', 'December 2019',
@@ -266,19 +269,49 @@ def make_and_model_canonicalization(car_sales, car_models):
         '''
 
     # Creating a single column for make and model, to match the format of the car_sales column
-    car_models["make_and_model"] = car_models["Make"].astype(str).str.replace("-", " ").str.lower() + " " + \
-                                   car_models["Model"].astype(str).str.replace("-", " ").str.lower()
+    car_models["make_and_model"] = car_models["Make"].astype(str).str.lower() + " " + car_models["Model"].astype(str).str.lower()
 
-    car_sales["make_and_model"] = car_sales["make_and_model"].str.replace("-"," ").str.lower()
     # Removing duplicates since the same make and model is present for multiple years in the car_models dataframe
-    car_models = car_models.loc[:, ["make_and_model", "Category"]].drop_duplicates()
+    car_models = car_models.loc[:, ["make_and_model", "Category"]].drop_duplicates().apply(lambda x: x.replace({"-":" ",
+                                                                                                                "benz":" ",
+                                                                                                                "bolt ev":"bolt",
+                                                                                                                "class":" ",
+                                                                                                                "passenger":" ",
+                                                                                                                "crew cab":" ",
+                                                                                                                "extended cab":" ",
+                                                                                                                "regular cab":" ",
+                                                                                                                "1500 double cab":" ",
+                                                                                                                "2500 hd double cab": " ",
+                                                                                                                "2500 hd": " ",
+                                                                                                                "3500 hd": " ",
+                                                                                                                "1500":" ",
+                                                                                                                "fuel cell":"fcv",
+                                                                                                                "plug in hybrid":" "},regex=True))
+    car_models["make_and_model"] = car_models["make_and_model"] \
+        .apply(lambda x: x[:12] if ("ford transit" in x and "ford transit connect" not in x) else x)\
+        .apply(lambda x: "ford f series" if "ford f150" in x else x)\
+        .apply(lambda x: "ford e series" if "ford e350" in x else x)
 
+    car_sales["make_and_model"] = car_sales["make_and_model"].str.lower()
+    car_sales = car_sales.apply(lambda x: x.replace({"-":" ",
+                                                     "benz":" ",
+                                                     "class":" ",
+                                                     "etron":"e tron",
+                                                     "tuscon":"tucson",
+                                                     "mazda 3":"mazda mazda3",
+                                                     "mazda 6":"mazda mazda6"},regex=True))
+
+    car_sales["make_and_model"] = car_sales["make_and_model"].apply(lambda x:' '.join(x.split()))
+    car_models["make_and_model"] = car_models["make_and_model"].apply(lambda x:' '.join(x.split()))
+
+    '''
     #Canonicalizing make_and_model for car_sales and car_models
     for index_sales,row_sales in car_sales.iterrows():
         for index_models,row_models in car_models.iterrows():
             if row_sales["make_and_model"] in row_models["make_and_model"]:
                 car_models["make_and_model"] = car_models["make_and_model"].str.\
                     replace(row_models["make_and_model"],row_sales["make_and_model"])
+    '''
 
     return car_sales,car_models
 
@@ -295,9 +328,11 @@ car_sales_by_size = car_sales_by_size[~car_sales_by_size[months_for_analysis].is
 #DEBUGGING: Finding null category values
 car_sales_list = car_sales["make_and_model"].to_list()
 missing_cars = (car_sales_by_size[car_sales_by_size["Category"].isnull()])["make_and_model"].to_list()
-print(missing_cars)
-print(len(missing_cars))
-print(car_sales_list)
+print("Car bodies with null values: \n", missing_cars)
+print("Number of car bodies with null values: ", len(missing_cars))
+print("Car models list:\n", car_models["make_and_model"].to_list())
+#print("GoodCarBadCar Models:",car_sales_list)
+
 
 car_models.to_csv('Car_Model_List_updated.csv', encoding='utf-8', index=False)
 car_sales.to_csv('Car_Sales_2019_2021.csv', encoding='utf-8', index=False)
