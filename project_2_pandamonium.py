@@ -317,7 +317,7 @@ def make_and_model_canonicalization(car_sales, car_models,missing_car_models):
                                 .replace("gl gls class","gls",regex=True)
                                 .replace("gle class","gle",regex=True)
                                 .replace("slc class","slc",regex=True)
-                                .replace("mercedes e cls class","mercedes e class",regex=True))
+                                .replace("e   cls class","cls",regex=True))
 
     car_sales["make_and_model"] = car_sales["make_and_model"].apply(lambda x:' '.join(x.split()))
     car_models["make_and_model"] = car_models["make_and_model"].apply(lambda x:' '.join(x.split()))
