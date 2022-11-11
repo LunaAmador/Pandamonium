@@ -5,6 +5,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 # Configure Notebook
 import warnings
@@ -84,7 +85,7 @@ car_sales_2019 = pd.DataFrame({'make_and_model': model_names, 'January 2019': ja
 
 #monthly_sums_2019 = list(car_sales_2019.sum(axis = 0)[1:])
 
-#print(car_sales_2019,monthly_sums_2019)
+#print(monthly_sums_2019)
 
 ##################################################################################
 #2020 data
@@ -157,7 +158,7 @@ car_sales_2020 = pd.DataFrame({'make_and_model': model_names, 'January 2020': ja
 
 #monthly_sums_2020 = list(car_sales_2020.sum(axis = 0)[1:])
 
-#print(car_sales_2020,monthly_sums_2020)
+#print(monthly_sums_2020)
 
 ##################################################################################
 #2021 data
@@ -230,7 +231,7 @@ car_sales_2021 = pd.DataFrame({'make_and_model': model_names, 'January 2021': ja
 
 #monthly_sums_2021 = list(car_sales_2021.sum(axis = 0)[1:])
 
-#print(car_sales_2021,monthly_sums_2021)
+#print(monthly_sums_2021)
 
 ##################################################################################
 
@@ -300,7 +301,7 @@ def make_and_model_canonicalization(car_sales, car_models,missing_car_models):
     car_sales = car_sales.apply(lambda x: x.replace("-", " ",regex=True)
                                 .replace("/", " ",regex=True)
                                 .replace("lr4"," ",regex=True)
-                                .replace("wrx"," ",regex=True)
+                                .replace("impreza wrx","wrx ",regex=True)
                                 .replace("fr s"," ",regex=True)
                                 .replace("benz"," ",regex=True)
                                 .replace("etron","e tron",regex=True)
@@ -308,9 +309,9 @@ def make_and_model_canonicalization(car_sales, car_models,missing_car_models):
                                 .replace("mazda3","mazda 3",regex=True)
                                 .replace("mazda6","mazda 6",regex=True)
                                 .replace("nautilus"," ",regex=True)
-                                .replace("90 series","xc90",regex=True)
-                                .replace("60 series","xc60",regex=True)
-                                .replace("40 series","xc40",regex=True)
+                                .replace("90 series","s90",regex=True)
+                                .replace("60 series","s60",regex=True)
+                                .replace("40 series","s40",regex=True)
                                 .replace("pickup"," ",regex=True)
                                 .replace("family"," ",regex=True)
                                 .replace("glk class"," ",regex=True)
@@ -334,6 +335,8 @@ car_sales_by_size = car_sales.merge(right=car_models,
 #Filters out the vehicle makes and models that were not sold in any month from 2019-2021 in Canada
 car_sales_by_size = car_sales_by_size[~car_sales_by_size[months_for_analysis].isna().all(1) | (car_sales_by_size[months_for_analysis]==0).all(1)]
 
+#Drop duplicate rows
+car_sales_by_size = car_sales_by_size.drop_duplicates(['make_and_model'])
 
 #DEBUGGING: Finding null category values
 car_sales_list = car_sales["make_and_model"].to_list()
@@ -342,16 +345,44 @@ print("Car bodies with null values: \n", missing_cars)
 print("Number of car bodies with null values: ", len(missing_cars))
 print("Car models list:\n", car_models["make_and_model"].to_list())
 
-
+#put car model, car sales, and merged car sales list  to csv
 car_models.to_csv('Car_Model_List_updated.csv', encoding='utf-8', index=False)
 car_sales.to_csv('Car_Sales_2019_2021.csv', encoding='utf-8', index=False)
+#car_sales_by_size.to_csv('Merged Car Sales List.csv', encoding='utf-8', index=False)
+
+#print(car_sales_by_size['Category'].unique())
+
+#categorizing all combinations of car size category
+small_cars=["Coupe","Hatchback","Convertible",'Convertible, Sedan','Coupe, Sedan, Convertible',
+            'Coupe, Convertible','Convertible, Sedan, Coupe','Sedan, Hatchback','Hatchback, Sedan',
+            'Hatchback, Sedan, Coupe','Convertible, Coupe, Hatchback']
+midsize_cars=["SUV","Sedan","Wagon",'Wagon, Sedan']
+large_cars=["Pickup","Van","Minivan",'Van Minivan']
+
+#categorizing the sizes
+car_sales_by_size['Category'] = car_sales_by_size['Category']\
+    .apply(lambda x: 'small' if (x in small_cars) else x)\
+    .apply(lambda x: 'midsize' if (x in midsize_cars) else x)\
+    .apply(lambda x: 'large' if (x in large_cars) else x)
+
 car_sales_by_size.to_csv('Merged Car Sales List.csv', encoding='utf-8', index=False)
 
-small_cars=["Coupe","Hatchback","Convertible"]
-midsize_cars=["SUV","Sedan","Wagon"]
-large_cars=["Pickup","Van","Minivan"]
+#create a new dataframe with categorized % columns
+car_size_category = car_sales_by_size.groupby('Category').agg(sum)
+#print(car_size_category)
 
+#create monthly sums list
+monthly_sums = list(car_sales_by_size.sum(axis = 0)[1:-1])
 
+#calculate % of each size per month
+car_size_category = (car_size_category/monthly_sums).T
 
+##sanity check
+#car_size_category['total'] = list(car_size_category.sum(axis = 1))
+#print(car_size_category)
 
+#convert to datetime index full month name and full year
+car_size_category.index = car_size_category.reset_index()['index'].apply(lambda x: datetime.strptime(x,"%B %Y"))
+#print(car_size_category)
 
+car_size_category.to_csv('%_category.csv', encoding='utf-8', index=False)
