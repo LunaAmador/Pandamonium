@@ -348,7 +348,7 @@ print("Car models list:\n", car_models["make_and_model"].to_list())
 #put car model, car sales, and merged car sales list  to csv
 car_models.to_csv('Car_Model_List_updated.csv', encoding='utf-8', index=False)
 car_sales.to_csv('Car_Sales_2019_2021.csv', encoding='utf-8', index=False)
-#car_sales_by_size.to_csv('Merged Car Sales List.csv', encoding='utf-8', index=False)
+car_sales_by_size.to_csv('Merged Car Sales List.csv', encoding='utf-8', index=False)
 
 #print(car_sales_by_size['Category'].unique())
 
@@ -365,8 +365,6 @@ car_sales_by_size['Category'] = car_sales_by_size['Category']\
     .apply(lambda x: 'midsize' if (x in midsize_cars) else x)\
     .apply(lambda x: 'large' if (x in large_cars) else x)
 
-car_sales_by_size.to_csv('Merged Car Sales List.csv', encoding='utf-8', index=False)
-
 #create a new dataframe with categorized % columns
 car_size_category = car_sales_by_size.groupby('Category').agg(sum)
 #print(car_size_category)
@@ -375,7 +373,9 @@ car_size_category = car_sales_by_size.groupby('Category').agg(sum)
 monthly_sums = list(car_sales_by_size.sum(axis = 0)[1:-1])
 
 #calculate % of each size per month
-car_size_category = (car_size_category/monthly_sums).T
+car_size_category = (car_size_category/monthly_sums).T.rename(columns={"small": "%_small",
+                                                                       "midsize": "%_midsize",
+                                                                       "large": "%_large"})
 
 ##sanity check
 #car_size_category['total'] = list(car_size_category.sum(axis = 1))
@@ -383,6 +383,36 @@ car_size_category = (car_size_category/monthly_sums).T
 
 #convert to datetime index full month name and full year
 car_size_category.index = car_size_category.reset_index()['index'].apply(lambda x: datetime.strptime(x,"%B %Y"))
-#print(car_size_category)
+
+#create a column for monthly sums
+car_size_category['total_sum'] = monthly_sums
 
 car_size_category.to_csv('%_category.csv', encoding='utf-8', index=False)
+
+#monthly employment stats units correct and datetime index set
+employment_stats = pd.read_csv("monthly_employment_stats_2019-2021.csv").set_index('Labour force characteristics')\
+    .T.astype(str).replace(',','',regex = True).astype(float)
+employment_stats.index = employment_stats.reset_index()['index'].apply(lambda x: datetime.strptime(x,"%b-%y"))
+
+employment_stats[['Unemployment rate','Participation rate','Employment rate']]= employment_stats[['Unemployment rate','Participation rate','Employment rate']]/100
+employment_stats[employment_stats.columns.difference(['Unemployment rate','Participation rate','Employment rate'])]=employment_stats[employment_stats.columns.difference(['Unemployment rate','Participation rate','Employment rate'])]*1000
+
+#employment_stats.to_csv('monthly_employment_stats_2019-2021_updated.csv', encoding='utf-8', index=False)
+
+#monthly oil prices units correct and datetime index set
+oil_prices = pd.read_csv("monthly_oil_prices_2019-2021.csv").rename(columns={"VALUE": "avg_oil_price"})\
+                 .set_index('REF_DATE').loc[:,'avg_oil_price'].astype(float)*1000000
+oil_prices.index = oil_prices.reset_index()['REF_DATE'].apply(lambda x: datetime.strptime(x,"%b-%y"))
+
+#oil_prices.to_csv('monthly_oil_prices_2019-2021_updated.csv', encoding='utf-8', index=False)
+
+#monthly transit ridership units correct and datetime index set
+transit_ridership = pd.read_csv("monthly_transit_ridership_2019-2021.csv").rename(columns={"VALUE": "transit_ridership"})\
+                        .set_index('REF_DATE').loc[:,'transit_ridership'].astype(float)*1000000
+transit_ridership.index = transit_ridership.reset_index()['REF_DATE'].apply(lambda x: datetime.strptime(x,"%b-%y"))
+
+#transit_ridership.to_csv('monthly_transit_ridership_2019-2021_updated.csv', encoding='utf-8', index=False)
+
+#merging all dataframes into using datetime indices
+total_table = pd.concat([car_size_category,employment_stats,oil_prices,transit_ridership], axis=1)
+total_table.to_csv('Merged Total Table.csv', encoding='utf-8', index=False)
