@@ -1,12 +1,12 @@
 make_and_model,Category
 audi q3,SUV
 chevrolet malibu,Sedan
-cadillac escalade,SUV
+cadillac escalade esv,SUV
 chevrolet corvette,"Coupe, Convertible"
 acura rlx,Sedan
 chevrolet silverado,Pickup
 bmw 3 series,Sedan
-chrysler pacifica,Van/Minivan
+chrysler pacifica,Van Minivan
 chevrolet colorado,Pickup
 bmw x3,SUV
 acura tlx,Sedan
@@ -39,16 +39,16 @@ chevrolet equinox,SUV
 gmc sierra,Pickup
 jeep gladiator,Pickup
 bmw x7,SUV
-cadillac ct6,Sedan
+cadillac ct6 v,Sedan
 audi a7,Sedan
 chevrolet blazer,SUV
-ford f150 supercrew cab,Pickup
+ford f series,Pickup
 chevrolet suburban,SUV
 honda civic,"Hatchback, Sedan, Coupe"
 jeep compass,SUV
 cadillac escalade,SUV
-chrysler voyager,Van/Minivan
-honda accord,Sedan
+chrysler voyager,Van Minivan
+honda accord hybrid,Sedan
 gmc terrain,SUV
 chevrolet spark,Hatchback
 gmc sierra,Pickup
@@ -57,12 +57,12 @@ hyundai veloster,Coupe
 chevrolet silverado,Pickup
 genesis g70,Sedan
 cadillac ct5,Sedan
-honda odyssey,Van/Minivan
-hyundai elantra,Hatchback
+honda odyssey,Van Minivan
+hyundai elantra gt,Hatchback
 acura rdx,SUV
-gmc yukon,SUV
-ford ranger,Pickup
-ford expedition,SUV
+gmc yukon xl,SUV
+ford ranger supercab,Pickup
+ford expedition max,SUV
 hyundai kona,SUV
 infiniti qx50,SUV
 dodge durango,SUV
@@ -86,9 +86,9 @@ chevrolet impala,Sedan
 honda cr v,SUV
 bmw x5,SUV
 infiniti q60,Coupe
-ford ranger,Pickup
+ford ranger supercrew,Pickup
 chevrolet trax,SUV
-hyundai ioniq,Hatchback
+hyundai ioniq plug in hybrid,Hatchback
 jaguar e pace,SUV
 hyundai tucson,SUV
 ford explorer,SUV
@@ -104,21 +104,21 @@ jeep wrangler,SUV
 kia sorento,SUV
 kia rio,"Sedan, Hatchback"
 land rover discovery sport,SUV
-kia sedona,Van/Minivan
+kia sedona,Van Minivan
 kia optima,Sedan
 kia sportage,SUV
-kia optima,Sedan
-kia optima,Sedan
-land rover range rover,SUV
+kia optima hybrid,Sedan
+kia optima plug in hybrid,Sedan
+land rover range rover evoque,SUV
 kia telluride,SUV
 kia forte,Sedan
-jeep wrangler,SUV
+jeep wrangler unlimited,SUV
 kia soul,Wagon
-land rover range rover,SUV
+land rover range rover sport,SUV
 land rover range rover,SUV
 kia stinger,Sedan
 land rover discovery,SUV
-land rover range rover,SUV
+land rover range rover velar,SUV
 lexus es,Sedan
 lexus lc,Coupe
 lexus lx,SUV
@@ -128,57 +128,57 @@ lexus is,Sedan
 lexus gs,Sedan
 lexus ls,Sedan
 lexus ux,SUV
-mercedes benz gls,SUV
-mercedes benz cla,Sedan
-mitsubishi outlander,SUV
+mercedes gls,SUV
+mercedes cla,Sedan
+mitsubishi outlander sport,SUV
 lincoln mkz,Sedan
 lincoln aviator,SUV
 lexus nx,SUV
-mazda cx 3,SUV
+mazda cx 30,SUV
 mitsubishi eclipse cross,SUV
-mazda mazda3,"Sedan, Hatchback"
-mitsubishi mirage,Sedan
+mazda 3,"Sedan, Hatchback"
+mitsubishi mirage g4,Sedan
 lincoln navigator,SUV
 nissan armada,SUV
 mazda cx 5,SUV
 lincoln corsair,SUV
-lincoln navigator,SUV
-mercedes benz g class,SUV
+lincoln navigator l,SUV
+mercedes g class,SUV
 lincoln nautilus,SUV
 lexus rx,SUV
 nissan kicks,SUV
 nissan murano,SUV
-mazda mazda6,Sedan
-mercedes benz c class,"Convertible, Sedan, Coupe"
-nissan nv,Van/Minivan
-mercedes benz gla,SUV
+mazda 6,Sedan
+mercedes c class,"Convertible, Sedan, Coupe"
+nissan nv,Van Minivan
+mercedes gla,SUV
 mazda cx 9,SUV
-nissan nv,Van/Minivan
-mercedes benz e class,"Coupe, Wagon, Sedan, Convertible"
+nissan nv cargo,Van Minivan
+mercedes e class,"Coupe, Wagon, Sedan, Convertible"
 mini countryman,SUV
-mercedes benz gle,SUV
+mercedes gle,SUV
 nissan maxima,Sedan
 nissan 370z,Coupe
-mercedes benz glc,SUV
+mercedes glc,SUV
 mitsubishi mirage,Hatchback
 nissan altima,Sedan
 nissan gt r,Coupe
 mitsubishi outlander,SUV
-mitsubishi outlander,SUV
-nissan nv,Van/Minivan
+mitsubishi outlander phev,SUV
+nissan nv cargo,Van Minivan
 porsche panamera,Sedan
 porsche taycan,Sedan
 nissan pathfinder,SUV
 nissan rogue,SUV
-nissan nv,Van/Minivan
+nissan nv200,Van Minivan
 porsche 911,Convertible
-nissan rogue,SUV
+nissan rogue sport,SUV
 porsche macan,SUV
+porsche cayenne coupe,SUV
 porsche cayenne,SUV
-porsche cayenne,SUV
-nissan nv,Van/Minivan
-ram 3500 crew cab,Pickup
-ram 1500 crew cab,Pickup
+nissan nv cargo,Van Minivan
+ram 3500,Pickup
+ram,Pickup
 subaru brz,Coupe
 nissan versa,Sedan
 toyota avalon,Sedan
@@ -187,37 +187,37 @@ toyota camry,Sedan
 subaru impreza,"Wagon, Sedan"
 subaru ascent,SUV
 subaru legacy,Sedan
-toyota corolla,Hatchback
+toyota corolla hatchback,Hatchback
 subaru crosstrek,SUV
 toyota corolla,Sedan
 toyota 86,Coupe
 subaru forester,SUV
-toyota avalon,Sedan
-ram 2500 crew cab,Pickup
+toyota avalon hybrid,Sedan
+ram 2500,Pickup
 toyota 4runner,SUV
 subaru outback,SUV
 toyota c hr,SUV
-toyota camry,Sedan
-toyota corolla,Sedan
+toyota camry hybrid,Sedan
+toyota corolla hybrid,Sedan
 toyota gr supra,Coupe
 toyota highlander,SUV
 toyota prius,Hatchback
 toyota prius prime,Hatchback
 toyota rav4,SUV
-toyota tacoma,Pickup
-toyota sienna,Van/Minivan
+toyota tacoma access cab,Pickup
+toyota sienna,Van Minivan
 toyota land cruiser,SUV
 toyota yaris,Sedan
-toyota rav4,SUV
-toyota highlander,SUV
+toyota rav4 hybrid,SUV
+toyota highlander hybrid,SUV
 toyota sequoia,SUV
-toyota tundra,Pickup
-toyota tacoma,Pickup
-toyota tundra,Pickup
+toyota tundra double cab,Pickup
+toyota tacoma double cab,Pickup
+toyota tundra crewmax,Pickup
 volkswagen passat,Sedan
-toyota yaris,Hatchback
-acura mdx,SUV
-acura rlx,Sedan
+toyota yaris hatchback,Hatchback
+acura mdx sport hybrid,SUV
+acura rlx sport hybrid,Sedan
 audi a6,Sedan
 volvo xc40,SUV
 audi a4,Sedan
@@ -225,17 +225,17 @@ audi q7,SUV
 audi q8,SUV
 audi rs 5,"Sedan, Coupe"
 acura nsx,Coupe
-alfa romeo 4c,Convertible
+alfa romeo 4c spider,Convertible
 volvo xc60,SUV
 volkswagen tiguan,SUV
-volvo xc90,SUV1992
+volvo xc90,SUV
 audi a8,Sedan
 bmw 4 series,"Convertible, Sedan, Coupe"
 acura ilx,Sedan
 bmw 2 series,"Coupe, Convertible"
 audi a3,"Convertible, Sedan"
 audi s5,"Sedan, Coupe, Convertible"
-audi a4,Wagon
+audi a4 allroad,Wagon
 audi e tron,SUV
 volkswagen jetta,Sedan
 audi rs 3,Sedan
@@ -254,16 +254,16 @@ bmw i3,Hatchback
 bmw 6 series,Sedan
 bmw m4,"Coupe, Convertible"
 audi tt,Coupe
-buick regal,Sedan
-bmw x6,SUV
+buick regal sportback,Sedan
+bmw x6 m,SUV
 bmw x2,SUV
-cadillac cts,Sedan
+cadillac cts v,Sedan
 bmw x1,SUV
 bmw x6,SUV
 bmw x4,SUV
 chevrolet camaro,"Coupe, Convertible"
 cadillac ct6,Sedan
-buick regal,Wagon
+buick regal tourx,Wagon
 bmw m2,Coupe
 buick cascada,Convertible
 cadillac cts,Sedan
@@ -271,72 +271,72 @@ chevrolet cruze,"Sedan, Hatchback"
 bmw z4,Convertible
 cadillac xts,Sedan
 buick lacrosse,Sedan
+cadillac ats v,Coupe
 cadillac ats,Coupe
-cadillac ats,Coupe
-chevrolet express,Van/Minivan
+chevrolet express,Van Minivan
 chevrolet colorado,Pickup
-chevrolet express,Van/Minivan
-chevrolet express,Van/Minivan
+chevrolet express 2500,Van Minivan
+chevrolet express 3500,Van Minivan
 chevrolet silverado,Pickup
 chevrolet silverado,Pickup
-chevrolet express,Van/Minivan
-chevrolet silverado,Pickup
+chevrolet express 3500 cargo,Van Minivan
+chevrolet silverado ld double cab,Pickup
 chevrolet silverado,Pickup
 chevrolet silverado,Pickup
 chevrolet sonic,"Sedan, Hatchback"
-chrysler pacifica,Van/Minivan
+chrysler pacifica hybrid,Van Minivan
 dodge challenger,Coupe
-fiat 500,Hatchback
+fiat 500l,Hatchback
 chevrolet volt,Sedan
-fiat 500,Hatchback
+fiat 500e,Hatchback
 fiat 500,Hatchback
 dodge journey,SUV
-ford f150 super cab,Pickup
-chevrolet suburban,SUV
-dodge grand caravan,Van/Minivan
+ford f series,Pickup
+chevrolet suburban 3500hd,SUV
+dodge grand caravan,Van Minivan
 chrysler 300,Sedan
-fiat 500,Convertible
-fiat 500,Hatchback
+fiat 500c,Convertible
+fiat 500 abarth,Hatchback
 fiat 124 spider,Convertible
-ford f250 super duty regular cab,Pickup
-fiat 500,SUV
-fiat 500,Convertible
-ford f150 regular cab,Pickup
-ford f450 super duty crew cab,Pickup
-ford f350 super duty crew cab,Pickup
+ford f250 super duty,Pickup
+fiat 500x,SUV
+fiat 500c abarth,Convertible
+ford f series,Pickup
+ford f450 super duty,Pickup
+ford f350 super duty,Pickup
 ford fiesta,"Hatchback, Sedan"
-ford f250 super duty crew cab,Pickup
+ford f250 super duty,Pickup
 ford f350 super duty super cab,Pickup
 ford flex,SUV
-ford transit,Van/Minivan
+ford transit,Van Minivan
 gmc canyon,Pickup
 genesis g90,Sedan
-ford fusion,Sedan
-ford transit,Van/Minivan
-ford transit,Van/Minivan
-ford transit,Van/Minivan
+ford fusion energi,Sedan
+ford transit connect cargo,Van Minivan
+ford transit,Van Minivan
+ford transit,Van Minivan
 ford f250 super duty super cab,Pickup
 gmc sierra,Pickup
-ford transit,Van/Minivan
-ford transit,Van/Minivan
-ford transit,Van/Minivan
-freightliner sprinter 2500 cargo,Van/Minivan
+ford transit,Van Minivan
+ford transit,Van Minivan
+ford transit connect,Van Minivan
+freightliner sprinter,Van Minivan
 ford taurus,Sedan
-gmc sierra,Pickup
-honda clarity electric,Sedan
+gmc sierra limited double cab,Pickup
+honda clarity,Sedan
 gmc sierra,Pickup
 gmc sierra,Pickup
 gmc canyon,Pickup
 gmc sierra,Pickup
-honda civic,Hatchback
+honda civic type r,Hatchback
 honda civic,"Coupe, Sedan, Hatchback"
-honda clarity fuel cell,Sedan
+honda clarity fcv,Sedan
 honda clarity plug in hybrid,Sedan
 honda fit,Hatchback
 hyundai ioniq,Hatchback
-hyundai sonata,Sedan
-hyundai ioniq,Hatchback
-hyundai sonata,Sedan
+hyundai sonata hybrid,Sedan
+hyundai ioniq hybrid,Hatchback
+hyundai sonata plug in hybrid,Sedan
 infiniti q70,Sedan
 infiniti qx30,SUV
 jaguar xe,Sedan
@@ -344,103 +344,103 @@ kia niro,Wagon
 jaguar xf,"Wagon, Sedan"
 jaguar f type,"Coupe, Convertible"
 jaguar xj,Sedan
-kia niro,Wagon
+kia niro plug in hybrid,Wagon
 kia cadenza,Sedan
 kia k900,Sedan
-kia niro,Wagon
-kia soul,Wagon
+kia niro ev,Wagon
+kia soul ev,Wagon
 maserati levante,SUV
-mazda mx 5 miata,Convertible
+mazda mx 5 miata rf,Convertible
 mazda mx 5 miata,Convertible
 lincoln continental,Sedan
 lincoln mkt,SUV
 mazda cx 3,SUV
 lincoln mkc,SUV
-mercedes benz a class,Sedan
+mercedes a class,Sedan
 maserati ghibli,Sedan
-mercedes benz mercedes amg c class,"Sedan, Convertible, Coupe"
-mercedes benz e class,"Coupe, Sedan, Wagon, Convertible"
-mercedes benz cls,Sedan
-mercedes benz mercedes amg cla,Sedan
-mercedes benz glc coupe,SUV
-mercedes benz mercedes amg cls,Sedan
-hyundai santa fe,SUV
-mercedes benz mercedes amg e class,"Coupe, Convertible, Sedan, Wagon"
-mercedes benz mercedes amg gle,SUV
-mercedes benz mercedes amg g class,SUV
-mercedes benz mercedes amg gla,SUV
-mercedes benz mercedes amg s class,"Sedan, Coupe, Convertible"
-mercedes benz sl,Convertible
-mercedes benz mercedes amg gt,"Coupe, Sedan, Convertible"
-mercedes benz metris,Van/Minivan
-mercedes benz mercedes amg gle coupe,SUV
-mercedes benz mercedes maybach s class,Sedan
-mercedes benz mercedes amg glc coupe,SUV
-mercedes benz sprinter,Van/Minivan
+mercedes amg c class,"Sedan, Convertible, Coupe"
+mercedes e class,"Coupe, Sedan, Wagon, Convertible"
+mercedes cls,Sedan
+mercedes amg cla,Sedan
+mercedes glc coupe,SUV
+mercedes amg cls,Sedan
+hyundai santa fe xl,SUV
+mercedes amg e class,"Coupe, Convertible, Sedan, Wagon"
+mercedes amg gle,SUV
+mercedes amg g class,SUV
+mercedes amg gla,SUV
+mercedes amg s class,"Sedan, Coupe, Convertible"
+mercedes sl,Convertible
+mercedes amg gt,"Coupe, Sedan, Convertible"
+mercedes metris,Van Minivan
+mercedes amg gle coupe,SUV
+mercedes s class,Sedan
+mercedes amg glc coupe,SUV
+mercedes sprinter,Van Minivan
 mini convertible,Convertible
-mercedes benz s class,"Coupe, Sedan, Convertible"
-mercedes benz metris,Van/Minivan
-mercedes benz slc,Convertible
-mercedes benz mercedes amg slc,Convertible
-mercedes benz mercedes amg glc,SUV
+mercedes s class,"Coupe, Sedan, Convertible"
+mercedes metris cargo,Van Minivan
+mercedes slc,Convertible
+mercedes amg slc,Convertible
+mercedes amg glc,SUV
 nissan 370z,"Coupe, Convertible"
-mercedes benz mercedes amg sl,Convertible
+mercedes amg sl,Convertible
 mini hardtop 2 door,Hatchback
 mini hardtop 4 door,Hatchback
 mini clubman,Hatchback
-mercedes benz mercedes amg gls,SUV
-nissan titan,Pickup
+mercedes amg gls,SUV
+nissan titan xd,Pickup
 nissan titan,Pickup
 porsche 718,Convertible
-nissan frontier,Pickup
+nissan frontier king cab,Pickup
 nissan frontier,Pickup
 nissan leaf,Hatchback
 nissan sentra,Sedan
-nissan titan,Pickup
-nissan nv taxi,Van/Minivan
-nissan titan,Pickup
-nissan titan,Pickup
-nissan versa,Hatchback
+nissan titan single cab,Pickup
+nissan nv200 taxi,Van Minivan
+nissan titan king cab,Pickup
+nissan titan xd single cab,Pickup
+nissan versa note,Hatchback
 ram 2500 mega cab,Pickup
-nissan titan,Pickup
-ram 1500 classic quad cab,Pickup
+nissan titan xd king cab,Pickup
+ram classic quad cab,Pickup
 porsche 911,"Coupe, Convertible"
-ram 1500 classic crew cab,Pickup
-ram 1500 classic regular cab,Pickup
-porsche 718,Coupe
-ram 1500 quad cab,Pickup
-ram 2500 regular cab,Pickup
+ram classic,Pickup
+ram classic,Pickup
+porsche 718 cayman,Coupe
+ram quad cab,Pickup
+ram 2500,Pickup
 ram 3500 mega cab,Pickup
-ram promaster,Van/Minivan
-ram promaster,Van/Minivan
-ram promaster,Van/Minivan
+ram promaster cargo van,Van Minivan
+ram promaster city,Van Minivan
+ram promaster window van,Van Minivan
 subaru impreza,"Sedan, Wagon"
 tesla model x,SUV
 tesla model 3,Sedan
-ram 3500 regular cab,Pickup
+ram 3500,Pickup
 tesla model s,Sedan
 toyota mirai,Sedan
 volkswagen atlas,SUV
 toyota prius c,Hatchback
-volkswagen golf,Wagon
+volkswagen golf sportwagen,Wagon
 volkswagen arteon,Sedan
 volkswagen e golf,Hatchback
 volkswagen golf,Hatchback
-volkswagen golf,Hatchback
-volkswagen jetta,Sedan
+volkswagen golf gti,Hatchback
+volkswagen jetta gli,Sedan
 volkswagen beetle,"Convertible, Coupe, Hatchback"
-volkswagen golf,Wagon
+volkswagen golf alltrack,Wagon
 volvo s60,Sedan
-volkswagen golf,Hatchback
+volkswagen golf r,Hatchback
 volvo v60,Wagon
 volvo v90,Wagon
 volvo s90,Sedan
-volvo xc90,SUV2020
+volvo xc90,SUV
 aston martin vanquish s,"Convertible, Coupe"
 audi a3,"Sedan, Convertible"
 alfa romeo 4c,Coupe
 aston martin db11,Coupe
-audi a3,Wagon
+audi a3 sportback e tron,Wagon
 audi a5,"Coupe, Convertible, Sedan"
 audi s7,Sedan
 audi s6,Sedan
@@ -457,11 +457,11 @@ bmw m3,Sedan
 bentley continental,Convertible
 bmw m6,"Coupe, Convertible"
 bentley mulsanne,Sedan
-bmw x5,SUV
+bmw x5 m,SUV
+cadillac ats v,"Coupe, Sedan"
 cadillac ats,"Coupe, Sedan"
-cadillac ats,"Coupe, Sedan"
-chevrolet city express,Van/Minivan
-chevrolet silverado,Pickup
+chevrolet city express,Van Minivan
+chevrolet silverado double cab,Pickup
 chevrolet silverado,Pickup
 ferrari gtc4lusso,Hatchback
 ferrari 488 gtb,Coupe
@@ -469,26 +469,26 @@ ferrari 812 superfast,Coupe
 ferrari portofino,Convertible
 ferrari 488 spider,Convertible
 ford c max hybrid,Wagon
-ford f350 super duty regular cab,Pickup
+ford f350 super duty,Pickup
 ford focus,"Sedan, Hatchback"
-ford transit,Van/Minivan
+ford transit,Van Minivan
 ford mustang,"Convertible, Coupe"
-freightliner sprinter 2500 crew,Van/Minivan
-freightliner sprinter 3500 cargo,Van/Minivan
-freightliner sprinter worker cargo,Van/Minivan
-freightliner sprinter 3500xd cargo,Van/Minivan
-freightliner sprinter 2500 passenger,Van/Minivan
-gmc savana,Van/Minivan
-gmc savana,Van/Minivan
-gmc savana,Van/Minivan
-gmc savana,Van/Minivan
+freightliner sprinter 2500 crew,Van Minivan
+freightliner sprinter 3500 cargo,Van Minivan
+freightliner sprinter worker cargo,Van Minivan
+freightliner sprinter 3500xd cargo,Van Minivan
+freightliner sprinter 2500,Van Minivan
+gmc savana 2500,Van Minivan
+gmc savana 3500,Van Minivan
+gmc savana 3500 cargo,Van Minivan
+gmc savana,Van Minivan
+gmc sierra double cab,Pickup
 gmc sierra,Pickup
-gmc sierra,Pickup
-hyundai santa fe,SUV
+hyundai santa fe sport,SUV
 honda civic,"Coupe, Hatchback, Sedan"
 jaguar xf,"Sedan, Wagon"
 jaguar f type,"Convertible, Coupe"
-kia forte,Hatchback
+kia forte5,Hatchback
 lamborghini huracan,Coupe
 lamborghini aventador,"Convertible, Coupe"
 maserati quattroporte,Sedan
@@ -498,37 +498,37 @@ mclaren 570gt,Coupe
 maserati granturismo,"Coupe, Convertible"
 mclaren 720s,Coupe
 mclaren 570s,"Coupe, Convertible"
-mercedes benz e class,"Sedan, Coupe, Convertible, Wagon"
-mercedes benz c class,"Convertible, Coupe, Sedan"
-mercedes benz mercedes amg e class,"Sedan, Wagon"
-mercedes benz sprinter,Van/Minivan
-mercedes benz mercedes amg gt,"Coupe, Convertible"
-mercedes benz mercedes amg c class,"Convertible, Sedan, Coupe"
-mercedes benz metris,Van/Minivan
-mercedes benz mercedes amg s class,"Coupe, Convertible, Sedan"
-mercedes benz metris,Van/Minivan
-mercedes benz sprinter,Van/Minivan
-mercedes benz sprinter,Van/Minivan
-mercedes benz sprinter,Van/Minivan
-mercedes benz sprinter,Van/Minivan
-mercedes benz s class,"Sedan, Coupe, Convertible"
+mercedes e class,"Sedan, Coupe, Convertible, Wagon"
+mercedes c class,"Convertible, Coupe, Sedan"
+mercedes amg e class,"Sedan, Wagon"
+mercedes sprinter 2500 crew,Van Minivan
+mercedes amg gt,"Coupe, Convertible"
+mercedes amg c class,"Convertible, Sedan, Coupe"
+mercedes metris worker cargo,Van Minivan
+mercedes amg s class,"Coupe, Convertible, Sedan"
+mercedes metris worker,Van Minivan
+mercedes sprinter 3500 xd cargo,Van Minivan
+mercedes sprinter 2500,Van Minivan
+mercedes sprinter worker cargo,Van Minivan
+mercedes sprinter 3500 cargo,Van Minivan
+mercedes s class,"Sedan, Coupe, Convertible"
 rolls royce ghost,Sedan
-ram 1500 regular cab,Pickup
-smart fortwo,Hatchback
+ram,Pickup
+smart fortwo drive,Hatchback
 rolls royce wraith,Coupe
 rolls royce dawn,Convertible
-smart fortwo,Convertible
+smart fortwo drive cabrio,Convertible
 rolls royce phantom,Sedan
-toyota corolla,Hatchback
-toyota yaris,Sedan
+toyota corolla im,Hatchback
+toyota yaris ia,Sedan
 toyota yaris,Hatchback
 volkswagen beetle,"Hatchback, Convertible"
 volvo xc90,SUV
-volkswagen tiguan,SUV
+volkswagen tiguan limited,SUV
 aston martin rapide s,Sedan
 aston martin vanquish,"Coupe, Convertible"
 aston martin vantage,"Convertible, Coupe"
-audi a5,"Convertible, Coupe"
+audi a5 sport,"Convertible, Coupe"
 audi s5,"Coupe, Convertible"
 bentley continental,"Convertible, Coupe"
 bmw 6 series,"Coupe, Sedan, Convertible"
@@ -536,7 +536,7 @@ bmw i8,Coupe
 bmw 4 series,"Sedan, Coupe, Convertible"
 bmw 2 series,"Convertible, Coupe"
 buick regal,Sedan
-cadillac ats,"Sedan, Coupe"
+cadillac ats v,"Sedan, Coupe"
 buick verano,Sedan
 chevrolet corvette,"Convertible, Coupe"
 chevrolet cruze,"Hatchback, Sedan"
@@ -548,33 +548,33 @@ chevrolet volt,Hatchback
 dodge viper,Coupe
 ford c max energi,Wagon
 ford fiesta,"Sedan, Hatchback"
-ford expedition,SUV
-freightliner sprinter worker passenger,Van/Minivan
-gmc acadia,SUV
+ford expedition el,SUV
+freightliner sprinter worker,Van Minivan
+gmc acadia limited,SUV
 honda accord,"Sedan, Coupe"
 hyundai accent,"Sedan, Hatchback"
 hyundai azera,Sedan
 infiniti qx70,SUV
-hyundai tucson fuel cell,SUV
+hyundai tucson fcv,SUV
 jaguar xf,Sedan
 jeep patriot,SUV
 lamborghini aventador,"Coupe, Convertible"
 lamborghini huracan,"Coupe, Convertible"
 lexus ct,Hatchback
-mercedes benz c class,"Coupe, Sedan, Convertible"
+mercedes c class,"Coupe, Sedan, Convertible"
 mclaren 570s,Coupe
-mercedes benz e class,"Convertible, Sedan, Coupe, Wagon"
-mazda mazda3,"Hatchback, Sedan"
-mercedes benz b class,Hatchback
-mercedes benz mercedes amg e class,Sedan
-mercedes benz mercedes amg gt,Coupe
-mercedes benz s class,"Sedan, Convertible, Coupe"
-mercedes benz sprinter,Van/Minivan
+mercedes e class,"Convertible, Sedan, Coupe, Wagon"
+mazda 3,"Hatchback, Sedan"
+mercedes b class,Hatchback
+mercedes amg e class,Sedan
+mercedes amg gt,Coupe
+mercedes s class,"Sedan, Convertible, Coupe"
+mercedes sprinter worker,Van Minivan
 mitsubishi lancer,Sedan
 mitsubishi i miev,Hatchback
-nissan quest,Van/Minivan
+nissan quest,Van Minivan
 nissan juke,SUV
-smart fortwo,Convertible
+smart fortwo cabrio,Convertible
 smart fortwo,Hatchback
 toyota prius v,Wagon
 toyota tundra,Pickup
@@ -588,37 +588,37 @@ bmw 4 series,"Coupe, Convertible"
 cadillac elr,Coupe
 chevrolet cruze,Sedan
 cadillac srx,SUV
-chevrolet cruze,Sedan
-chevrolet impala,Sedan
-chevrolet malibu,Sedan
+chevrolet cruze limited,Sedan
+chevrolet impala limited,Sedan
+chevrolet malibu limited,Sedan
 dodge dart,Sedan
-chrysler town & country,Van/Minivan
-chevrolet spark,Hatchback
+chrysler town & country,Van Minivan
+chevrolet spark ev,Hatchback
 ferrari ff,Coupe
-fiat 500,"Hatchback, Convertible"
+fiat 500 abarth,"Hatchback, Convertible"
 honda civic,"Sedan, Coupe"
 honda cr z,Coupe
 hyundai accent,"Hatchback, Sedan"
-hyundai genesis,Sedan
-hyundai genesis coupe,Coupe
+hyundai,Sedan
+hyundai coupe,Coupe
 hyundai equus,Sedan
-kia forte,Coupe
+kia forte koup,Coupe
 land rover lr4,SUV
 mclaren 650s,"Convertible, Coupe"
 lincoln mks,Sedan
 mclaren 675lt,Coupe
-mercedes benz cls class,Sedan
-mercedes benz gl class,SUV
-mercedes benz e class,"Sedan, Coupe, Wagon, Convertible"
-mercedes benz c class,Sedan
-mercedes benz gle coupe,SUV
-mercedes benz mercedes maybach s 600,Sedan
-mercedes benz slk,Convertible
-mercedes benz s class,"Sedan, Coupe"
-mercedes benz mercedes amg slk,Convertible
+mercedes cls class,Sedan
+mercedes gl class,SUV
+mercedes e class,"Sedan, Coupe, Wagon, Convertible"
+mercedes c class,Sedan
+mercedes gle coupe,SUV
+mercedes s 600,Sedan
+mercedes slk,Convertible
+mercedes s class,"Sedan, Coupe"
+mercedes amg slk,Convertible
 mini paceman,Hatchback
 porsche cayman,Coupe
-porsche boxster,Convertible
+porsche,Convertible
 scion ia,Sedan
 rolls royce phantom,"Sedan, Convertible, Coupe"
 scion tc,Coupe
@@ -637,36 +637,36 @@ cadillac ats,"Sedan, Coupe"
 ferrari 458 italia,Coupe
 ferrari 458 speciale,Coupe
 ferrari 458 spider,Convertible
-ford focus,Hatchback
+ford focus st,Hatchback
 honda crosstour,SUV
 infiniti q40,Sedan
 jaguar xk,"Coupe, Convertible"
 infiniti q60,"Coupe, Convertible"
 land rover lr2,SUV
 lexus is,"Sedan, Convertible"
-mercedes benz m class,SUV
-mercedes benz cla class,Sedan
-mazda mazda5,Van/Minivan
-mercedes benz c class,"Sedan, Coupe"
-mercedes benz e class,"Convertible, Wagon, Coupe, Sedan"
-mercedes benz glk class,SUV
+mercedes m class,SUV
+mercedes cla class,Sedan
+mazda 5,Van Minivan
+mercedes c class,"Sedan, Coupe"
+mercedes e class,"Convertible, Wagon, Coupe, Sedan"
+mercedes glk class,SUV
 mclaren 650s,"Coupe, Convertible"
-mercedes benz gla class,SUV
-mercedes benz sls class,"Coupe, Convertible"
-mercedes benz sl class,Convertible
-mercedes benz slk class,Convertible
+mercedes gla class,SUV
+mercedes sls class,"Coupe, Convertible"
+mercedes sl class,Convertible
+mercedes slk class,Convertible
 mini coupe,Coupe
 mini countryman,Hatchback
 mini roadster,Convertible
 mitsubishi lancer evolution,Sedan
-nissan rogue,SUV
+nissan rogue select,SUV
 nissan versa,"Sedan, Hatchback"
 nissan xterra,SUV
 scion iq,Hatchback
 subaru xv crosstrek,SUV
-ram c/v tradesman,Van/Minivan
+ram c v tradesman,Van Minivan
 smart fortwo,"Hatchback, Convertible"
-smart fortwo,"Hatchback, Convertible"
+smart fortwo drive,"Hatchback, Convertible"
 rolls royce phantom,"Coupe, Convertible, Sedan"
 scion xb,Hatchback
 toyota prius plug in hybrid,Hatchback
@@ -680,47 +680,47 @@ bmw 3 series,"Wagon, Sedan"
 bmw 6 series,"Coupe, Convertible"
 cadillac cts,"Sedan, Coupe, Wagon"
 cadillac ats,Sedan
-chevrolet express,Van/Minivan
-chevrolet express,Van/Minivan
+chevrolet express cargo,Van Minivan
+chevrolet express,Van Minivan
 chrysler 200,"Sedan, Convertible"
 chevrolet suburban,SUV
 dodge avenger,Sedan
-ford e350 super duty cargo,Van/Minivan
-ford e150 passenger,Van/Minivan
-ford e150 cargo,Van/Minivan
-ford e250 cargo,Van/Minivan
-ford e350 super duty passenger,Van/Minivan
-gmc savana,Van/Minivan
-gmc savana,Van/Minivan
-gmc yukon 1500,SUV
+ford e series,Van Minivan
+ford e150,Van Minivan
+ford e150 cargo,Van Minivan
+ford e250 cargo,Van Minivan
+ford e series,Van Minivan
+gmc savana cargo,Van Minivan
+gmc savana,Van Minivan
+gmc yukon xl,SUV
 honda insight,Hatchback
 hyundai elantra,"Sedan, Hatchback, Coupe"
 kia forte,"Sedan, Coupe, Hatchback"
 lamborghini gallardo,"Coupe, Convertible"
-mazda mazda2,Hatchback
+mazda 2,Hatchback
 lotus evora,Coupe
 maserati granturismo,"Convertible, Coupe"
 mclaren mp4 12c,"Coupe, Convertible"
-mercedes benz cls class,Coupe
-mercedes benz cl class,Coupe
-mercedes benz e class,"Sedan, Wagon, Coupe, Convertible"
+mercedes cls class,Coupe
+mercedes cl class,Coupe
+mercedes e class,"Sedan, Wagon, Coupe, Convertible"
 nissan cube,Wagon
-mercedes benz s class,Sedan
+mercedes s class,Sedan
 mitsubishi lancer,"Sedan, Hatchback"
 mini hardtop,Hatchback
 subaru tribeca,SUV
 rolls royce phantom,"Sedan, Coupe, Convertible"
-ram promaster,Van/Minivan
-ram promaster,Van/Minivan
+ram promaster 3500 cargo,Van Minivan
+ram promaster,Van Minivan
 scion xd,Hatchback
-ram promaster,Van/Minivan
+ram promaster cargo,Van Minivan
 srt viper,Coupe
 toyota fj cruiser,SUV
 toyota tacoma,Pickup
 subaru outback,Wagon
 volkswagen gti,Hatchback
-volkswagen routan,Van/Minivan
-volkswagen jetta,Wagon
+volkswagen routan,Van Minivan
+volkswagen jetta sportwagen,Wagon
 audi a5,"Convertible, Coupe"
 audi a3,Wagon
 acura zdx,SUV
@@ -730,16 +730,16 @@ bmw 1 series,"Coupe, Convertible"
 bentley continental,"Sedan, Convertible, Coupe"
 bmw 6 series,"Convertible, Coupe"
 bmw m3,"Coupe, Convertible"
-cadillac escalade,Pickup
+cadillac escalade ext,Pickup
 chevrolet avalanche,SUV
 chevrolet silverado,Pickup
 chevrolet silverado,Pickup
 chevrolet silverado,Pickup
-chevrolet suburban,SUV
+chevrolet suburban 2500,SUV
 fiat 500,"Hatchback, Convertible"
 gmc sierra,Pickup
 gmc sierra,Pickup
-gmc yukon 2500,SUV
+gmc yukon xl 2500,SUV
 gmc sierra,Pickup
 infiniti ex,SUV
 infiniti qx,SUV
@@ -785,16 +785,16 @@ lexus lfa,Coupe
 maybach 62,Sedan
 mazda cx 7,SUV
 maybach 57,Sedan
-mercedes benz sls class,"Convertible, Coupe"
-mercedes benz r class,Wagon
+mercedes sls class,"Convertible, Coupe"
+mercedes r class,Wagon
 nissan 370z,"Convertible, Coupe"
 mitsubishi eclipse,"Coupe, Convertible"
 mitsubishi galant,Sedan
 nissan altima,"Coupe, Sedan"
-ram c/v,Van/Minivan
+ram c v,Van Minivan
 rolls royce phantom,"Convertible, Coupe, Sedan"
-suzuki equator extended cab,Pickup
-suzuki equator crew cab,Pickup
+suzuki equator,Pickup
+suzuki equator,Pickup
 toyota yaris,"Hatchback, Sedan"
 volkswagen beetle,Hatchback
 audi a6,"Sedan, Wagon"
@@ -810,36 +810,36 @@ chevrolet hhr,Wagon
 cadillac sts,Sedan
 chrysler 200,"Convertible, Sedan"
 ferrari 599 gtb fiorano,Coupe
-dodge grand caravan,Van/Minivan
+dodge grand caravan cargo,Van Minivan
 ferrari 599 gto,Coupe
 ferrari 612 scaglietti,Coupe
 dodge nitro,SUV
 ford crown victoria,Sedan
 ford focus,Sedan
+ford ranger super cab,Pickup
 ford ranger,Pickup
-ford ranger,Pickup
-honda accord,SUV
+honda accord crosstour,SUV
 honda element,SUV
 hyundai elantra,"Wagon, Sedan"
 jaguar xk,"Convertible, Coupe"
 lotus elise,Coupe
-lexus is,Sedan
+lexus is f,Sedan
 lincoln town car,Sedan
 lotus exige,Coupe
 mazda rx 8,Coupe
-mercedes benz e class,"Coupe, Convertible, Sedan, Wagon"
+mercedes e class,"Coupe, Convertible, Sedan, Wagon"
 mazda tribute,SUV
 mercury milan,Sedan
 mercury mariner,SUV
 mercury grand marquis,Sedan
 mitsubishi endeavor,SUV
-mercedes benz sls class,Coupe
+mercedes sls class,Coupe
 porsche 911,"Convertible, Coupe"
 rolls royce phantom,"Convertible, Sedan, Coupe"
 saab 9 4x,SUV
 saab 3 sep,"Sedan, Convertible, Wagon"
-ram dakota crew cab,Pickup
-ram dakota extended cab,Pickup
+ram dakota,Pickup
+ram dakota,Pickup
 saab 5 sep,Sedan
 volkswagen jetta,"Sedan, Wagon"
 acura tsx,Sedan
@@ -854,22 +854,22 @@ chevrolet camaro,Coupe
 cadillac cts,"Sedan, Wagon"
 chevrolet cobalt,"Sedan, Coupe"
 chevrolet aveo,"Sedan, Hatchback"
-dodge ram 2500 regular cab,Pickup
+dodge 2500,Pickup
 chrysler pt cruiser,Wagon
 chrysler sebring,"Sedan, Convertible"
-dodge ram 1500 quad cab,Pickup
-dodge dakota extended cab,Pickup
-dodge ram 1500 crew cab,Pickup
-dodge dakota crew cab,Pickup
-dodge ram 2500 mega cab,Pickup
-dodge ram 1500 regular cab,Pickup
-dodge ram 3500 crew cab,Pickup
-dodge ram 2500 crew cab,Pickup
+dodge quad cab,Pickup
+dodge dakota,Pickup
+dodge,Pickup
+dodge dakota,Pickup
+dodge 2500 mega cab,Pickup
+dodge,Pickup
+dodge 3500,Pickup
+dodge 2500,Pickup
 dodge viper,"Convertible, Coupe"
-dodge ram 3500 mega cab,Pickup
-dodge ram 3500 regular cab,Pickup
-ford e150 super duty passenger,Van/Minivan
-ford explorer,Pickup
+dodge 3500 mega cab,Pickup
+dodge 3500,Pickup
+ford e150 super duty,Van Minivan
+ford explorer sport trac,Pickup
 ford focus,"Sedan, Coupe"
 hummer h3t,Pickup
 hummer h3,SUV
@@ -880,7 +880,7 @@ lamborghini murcielago,"Coupe, Convertible"
 kia forte,"Sedan, Coupe"
 lexus is,"Convertible, Sedan"
 lexus sc,Convertible
-mercedes benz e class,"Sedan, Coupe"
+mercedes e class,"Sedan, Coupe"
 mercury mountaineer,SUV
 saab 3 sep,"Wagon, Convertible, Sedan"
 pontiac vibe,Wagon
@@ -901,15 +901,15 @@ bmw 3 series,"Sedan, Convertible, Coupe, Wagon"
 bentley azure,Convertible
 cadillac xlr,Convertible
 chevrolet trailblazer,SUV
-dodge ram 3500 quad cab,Pickup
+dodge 3500 quad cab,Pickup
 chrysler aspen,SUV
 ferrari 430 scuderia,"Coupe, Convertible"
-dodge ram 2500 quad cab,Pickup
-dodge sprinter 2500 cargo,Van/Minivan
+dodge 2500 quad cab,Pickup
+dodge sprinter,Van Minivan
 dodge viper,"Coupe, Convertible"
 ferrari f430,"Coupe, Convertible"
 ford focus,"Coupe, Sedan"
-ford taurus,SUV
+ford taurus x,SUV
 gmc envoy,SUV
 honda s2000,Convertible
 hummer h2,SUV
@@ -920,15 +920,15 @@ lamborghini murcielago,"Convertible, Coupe"
 kia spectra,"Sedan, Hatchback"
 land rover lr3,SUV
 maserati granturismo,Coupe
-mazda b series regular cab,Pickup
-mercedes benz clk class,"Coupe, Convertible"
-mazda b series extended cab,Pickup
-mercedes benz e class,"Sedan, Wagon"
+mazda b series,Pickup
+mercedes clk class,"Coupe, Convertible"
+mazda b series,Pickup
+mercedes e class,"Sedan, Wagon"
 nissan 350z,Convertible
 mercury sable,Sedan
-mercedes benz slr mclaren,Convertible
+mercedes slr,Convertible
 mitsubishi raider double cab,Pickup
-mitsubishi raider extended cab,Pickup
+mitsubishi raider,Pickup
 pontiac g6 (2009.5),"Coupe, Sedan, Convertible"
 pontiac solstice,"Convertible, Coupe"
 pontiac g8,Sedan
@@ -942,7 +942,7 @@ saturn sky,Convertible
 suzuki xl7,SUV
 volkswagen rabbit,Hatchback
 volkswagen passat,"Wagon, Sedan"
-volkswagen touareg,SUV
+volkswagen touareg 2,SUV
 volkswagen gli,Sedan
 audi a4,"Convertible, Sedan, Wagon"
 audi rs 4,"Sedan, Convertible"
@@ -951,35 +951,35 @@ audi s4,"Sedan, Wagon, Convertible"
 bmw 3 series,"Sedan, Coupe, Wagon, Convertible"
 bentley continental,"Sedan, Coupe, Convertible"
 bmw z4,"Convertible, Coupe"
-bmw z4,"Coupe, Convertible"
+bmw z4 m,"Coupe, Convertible"
 bmw alpina b7,Sedan
 chevrolet malibu (classic),Sedan
 chrysler pacifica,Wagon
-chevrolet uplander cargo,Van/Minivan
+chevrolet uplander cargo,Van Minivan
 chrysler crossfire,"Coupe, Convertible"
-chevrolet uplander passenger,Van/Minivan
-dodge sprinter 2500 passenger,Van/Minivan
+chevrolet uplander,Van Minivan
+dodge sprinter 2500,Van Minivan
 chrysler pt cruiser,"Wagon, Convertible"
 dodge magnum,Wagon
-dodge ram 1500 mega cab,Pickup
+dodge mega cab,Pickup
 ferrari f430,"Convertible, Coupe"
-dodge sprinter 3500 cargo,Van/Minivan
+dodge sprinter 3500 cargo,Van Minivan
 ferrari 430 scuderia,Coupe
-ford explorer,SUV
-hyundai entourage,Van/Minivan
-isuzu i 370 extended cab,Pickup
+ford explorer sport trac,SUV
+hyundai entourage,Van Minivan
+isuzu i 370,Pickup
 hyundai tiburon,Hatchback
-isuzu i 290 extended cab,Pickup
+isuzu i 290,Pickup
 infiniti g,"Sedan, Coupe"
 jaguar s type,Sedan
 lamborghini murcielago lp640,"Coupe, Convertible"
 isuzu ascender,SUV
 jaguar x type,"Sedan, Wagon"
-isuzu i 370 crew cab,Pickup
+isuzu i 370,Pickup
 lotus exige s,Coupe
-mercedes benz clk class,"Convertible, Coupe"
+mercedes clk class,"Convertible, Coupe"
 lincoln mark lt,Pickup
-mazda mazda6,"Sedan, Hatchback"
+mazda 6,"Sedan, Hatchback"
 nissan 350z,"Coupe, Convertible"
 mini cooper,Hatchback
 pontiac grand prix,Sedan
@@ -995,52 +995,52 @@ buick rendezvous,SUV
 bmw 3 series,"Coupe, Sedan, Convertible, Wagon"
 audi rs 4,Sedan
 chevrolet avalanche,Pickup
-buick terraza,Van/Minivan
+buick terraza,Van Minivan
 buick rainier,SUV
-chevrolet silverado (classic) 3500 extended cab,Pickup
-chevrolet silverado (classic) 2500 hd crew cab,Pickup
-chevrolet silverado (classic) 1500 crew cab,Pickup
-chevrolet silverado (classic) 1500 regular cab,Pickup
+chevrolet silverado (classic) 3500,Pickup
+chevrolet silverado (classic),Pickup
+chevrolet silverado (classic),Pickup
+chevrolet silverado (classic),Pickup
 chevrolet malibu,"Sedan, Hatchback"
-chevrolet silverado (classic) 1500 extended cab,Pickup
-chevrolet silverado (classic) 1500 hd crew cab,Pickup
-chevrolet silverado (classic) 3500 crew cab,Pickup
+chevrolet silverado (classic),Pickup
+chevrolet silverado (classic) hd,Pickup
+chevrolet silverado (classic) 3500,Pickup
 chevrolet monte carlo,Coupe
-chevrolet silverado (classic) 3500 regular cab,Pickup
-chevrolet silverado (classic) 2500 hd regular cab,Pickup
-chevrolet silverado (classic) 2500 hd extended cab,Pickup
-dodge caravan passenger,Van/Minivan
+chevrolet silverado (classic) 3500,Pickup
+chevrolet silverado (classic),Pickup
+chevrolet silverado (classic),Pickup
+dodge caravan,Van Minivan
 chrysler sebring,Sedan
-dodge caravan cargo,Van/Minivan
+dodge caravan cargo,Van Minivan
 dodge dakota quad cab,Pickup
 dodge dakota club cab,Pickup
-ford e250 super duty cargo,Van/Minivan
-ford e150 super duty cargo,Van/Minivan
-ford freestar cargo,Van/Minivan
+ford e250 super duty cargo,Van Minivan
+ford e150 super duty cargo,Van Minivan
+ford freestar cargo,Van Minivan
 ford five hundred,Sedan
-gmc sierra (classic) 1500 hd crew cab,Pickup
-ford freestar passenger,Van/Minivan
+gmc sierra (classic) hd,Pickup
+ford freestar,Van Minivan
 ford focus,"Hatchback, Sedan, Wagon"
-gmc sierra (classic) 3500 crew cab,Pickup
+gmc sierra (classic) 3500,Pickup
 ford freestyle,SUV
-gmc sierra (classic) 1500 crew cab,Pickup
-gmc sierra (classic) 1500 extended cab,Pickup
-gmc sierra (classic) 2500 hd crew cab,Pickup
-gmc sierra (classic) 1500 regular cab,Pickup
-gmc sierra (classic) 3500 extended cab,Pickup
-gmc sierra (classic) 3500 regular cab,Pickup
-gmc sierra (classic) 2500 hd extended cab,Pickup
-gmc sierra (classic) 2500 hd regular cab,Pickup
+gmc sierra (classic),Pickup
+gmc sierra (classic),Pickup
+gmc sierra (classic),Pickup
+gmc sierra (classic),Pickup
+gmc sierra (classic) 3500,Pickup
+gmc sierra (classic) 3500,Pickup
+gmc sierra (classic),Pickup
+gmc sierra (classic),Pickup
 hyundai tiburon,Coupe
 hummer h2,"SUV, Pickup"
-mazda mazda6,"Sedan, Hatchback, Wagon"
+mazda 6,"Sedan, Hatchback, Wagon"
 mercury montego,Sedan
-mercedes benz slr mclaren,Coupe
-mercury monterey,Van/Minivan
+mercedes slr,Coupe
+mercury monterey,Van Minivan
 nissan versa,"Hatchback, Sedan"
 pontiac vibe,Hatchback
 saab 3 sep,"Wagon, Sedan, Convertible"
-saturn relay,Van/Minivan
+saturn relay,Van Minivan
 saturn ion,"Sedan, Coupe"
 subaru legacy,"Sedan, Wagon"
 suzuki sx4,Hatchback
@@ -1052,41 +1052,41 @@ bentley continental,"Sedan, Coupe"
 aston martin vanquish s,Coupe
 aston martin vantage,Coupe
 acura rsx,Coupe
-bmw z4,"Convertible, Coupe"
+bmw z4 m,"Convertible, Coupe"
 chevrolet cobalt,"Coupe, Sedan"
 chevrolet avalanche 2500,Pickup
-chevrolet avalanche 1500,Pickup
+chevrolet avalanche,Pickup
 chevrolet ssr,Pickup
-chevrolet silverado,Pickup
-chevrolet silverado,Pickup
-chevrolet silverado,Pickup
-chevrolet silverado,Pickup
+chevrolet silverado 3500,Pickup
+chevrolet silverado 3500,Pickup
+chevrolet silverado 3500,Pickup
+chevrolet silverado hd,Pickup
 dodge stratus,Sedan
 ford gt,Coupe
 gmc envoy xl,SUV
-gmc sierra,Pickup
-gmc sierra,Pickup
-gmc sierra,Pickup
-gmc sierra,Pickup
+gmc sierra 3500,Pickup
+gmc sierra hd,Pickup
+gmc sierra 3500,Pickup
+gmc sierra 3500,Pickup
 hummer h1,"Wagon, SUV"
 infiniti q,Sedan
-isuzu i 350 crew cab,Pickup
+isuzu i 350,Pickup
 hyundai elantra,"Hatchback, Sedan"
-isuzu i 280 extended cab,Pickup
+isuzu i 280,Pickup
 infiniti g,"Coupe, Sedan"
 kia optima (2006.5),Sedan
 lincoln ls,Sedan
 maserati gransport,"Coupe, Convertible"
 lincoln zephyr,Sedan
 maserati coupe,Coupe
-mazda mpv,Van/Minivan
+mazda mpv,Van Minivan
 mitsubishi montero,SUV
 mitsubishi eclipse,Coupe
 nissan 350z,"Convertible, Coupe"
 pontiac g6,"Coupe, Convertible, Sedan"
 panoz esperante,"Coupe, Convertible"
 pontiac gto,Coupe
-pontiac montana sv6,Van/Minivan
+pontiac montana sv6,Van Minivan
 subaru baja,Pickup
 scion xa,Hatchback
 saab 9 2x,Wagon
@@ -1095,7 +1095,7 @@ suzuki xl 7,SUV
 subaru legacy,"Wagon, Sedan"
 suzuki aerio,"Sedan, Wagon"
 suzuki verona,Sedan
-toyota tundra,Pickup
+toyota tundra access cab,Pickup
 audi a4 (2005.5),"Sedan, Wagon"
 volkswagen phaeton,Sedan
 buick century,Sedan
@@ -1103,14 +1103,14 @@ audi s4 (2005.5),"Sedan, Wagon"
 audi s4,"Convertible, Wagon, Sedan"
 bentley continental,"Coupe, Sedan"
 buick park avenue,Sedan
-chevrolet astro cargo,Van/Minivan
+chevrolet astro cargo,Van Minivan
 cadillac deville,Sedan
 buick lesabre,Sedan
 chevrolet classic,Sedan
-chevrolet astro passenger,Van/Minivan
+chevrolet astro,Van Minivan
 chevrolet cavalier,"Sedan, Coupe"
-chevrolet venture passenger,Van/Minivan
-chevrolet venture cargo,Van/Minivan
+chevrolet venture,Van Minivan
+chevrolet venture cargo,Van Minivan
 chrysler sebring,"Coupe, Sedan, Convertible"
 dodge neon,Sedan
 dodge stratus,"Sedan, Coupe"
@@ -1118,20 +1118,20 @@ ford excursion,SUV
 dodge viper,Convertible
 gmc envoy xuv,SUV
 ford taurus,"Sedan, Wagon"
-gmc safari cargo,Van/Minivan
+gmc safari cargo,Van Minivan
 ford thunderbird,Convertible
-gmc safari passenger,Van/Minivan
+gmc safari,Van Minivan
 hyundai xg350,Sedan
 kia rio,"Sedan, Wagon"
 maserati gransport,Coupe
 land rover freelander,SUV
 lexus is,"Sedan, Hatchback"
-mercedes benz c class,"Sedan, Coupe, Wagon"
+mercedes c class,"Sedan, Coupe, Wagon"
 mercury sable,"Sedan, Wagon"
 pontiac bonneville,Sedan
 pontiac aztek,SUV
 pontiac grand am,"Sedan, Coupe"
-pontiac montana,Van/Minivan
+pontiac montana,Van Minivan
 pontiac sunfire,Coupe
 saab 3 sep,"Convertible, Sedan"
 porsche carrera gt,Convertible
@@ -1144,30 +1144,30 @@ volkswagen jetta (new),Sedan
 audi a6,"Wagon, Sedan"
 cadillac seville,Sedan
 chevrolet malibu,"Hatchback, Sedan"
-chevrolet silverado,Pickup
-chevrolet s10 crew cab,Pickup
-chevrolet silverado,Pickup
-chevrolet silverado,Pickup
+chevrolet silverado 2500,Pickup
+chevrolet s10,Pickup
+chevrolet silverado 2500,Pickup
+chevrolet silverado 2500,Pickup
 chrysler crossfire,Coupe
-chrysler 300,Sedan
+chrysler 300m,Sedan
 chrysler concorde,Sedan
 chevrolet tracker,SUV
-dodge dakota regular cab,Pickup
+dodge dakota,Pickup
 chrysler sebring,"Coupe, Convertible, Sedan"
 dodge intrepid,Sedan
-ford f150 (heritage) super cab,Pickup
-ford f150 (heritage) regular cab,Pickup
+ford f series,Pickup
+ford f series,Pickup
 ford focus,"Sedan, Hatchback, Wagon"
-gmc sierra,Pickup
-gmc sonoma crew cab,Pickup
-gmc sierra,Pickup
-gmc sierra,Pickup
+gmc sierra 2500,Pickup
+gmc sonoma,Pickup
+gmc sierra 2500,Pickup
+gmc sierra 2500,Pickup
 hyundai elantra,"Sedan, Hatchback"
 kia rio,"Wagon, Sedan"
 jaguar x type,Sedan
 isuzu axiom,SUV
 isuzu rodeo,SUV
-mazda mazda6,"Sedan, Wagon, Hatchback"
+mazda 6,"Sedan, Wagon, Hatchback"
 infiniti i,Sedan
 mazda b series cab plus,Pickup
 mercury marauder,Sedan
@@ -1176,8 +1176,8 @@ mitsubishi lancer,"Sedan, Wagon"
 mitsubishi montero sport,SUV
 oldsmobile bravada,SUV
 oldsmobile alero,"Coupe, Sedan"
-nissan pathfinder,SUV
-oldsmobile silhouette,Van/Minivan
+nissan pathfinder armada,SUV
+oldsmobile silhouette,Van Minivan
 pontiac grand am,"Coupe, Sedan"
 suzuki forenza,Sedan
 saturn l series,"Sedan, Wagon"
@@ -1188,35 +1188,35 @@ saab 5 sep,"Wagon, Sedan"
 toyota matrix,"Hatchback, Wagon"
 volkswagen jetta,"Wagon, Sedan"
 volvo s40 (new),Sedan
-toyota tacoma,Pickup
+toyota tacoma xtracab,Pickup
 volvo v40,Wagon
 audi a4,"Wagon, Sedan, Convertible"
 acura cl,Coupe
 audi s6,Wagon
 bmw z8,Convertible
 audi rs 6,Sedan
-chevrolet s10 extended cab,Pickup
-chevrolet s10 regular cab,Pickup
+chevrolet s10,Pickup
+chevrolet s10,Pickup
 chrysler sebring,"Sedan, Coupe, Convertible"
-dodge ram van 1500,Van/Minivan
-dodge ram van 2500,Van/Minivan
-dodge ram van 3500,Van/Minivan
-ford explorer,SUV
+dodge van,Van Minivan
+dodge van 2500,Van Minivan
+dodge van 3500,Van Minivan
+ford explorer sport,SUV
 ford focus,"Sedan, Wagon, Hatchback"
-ford windstar cargo,Van/Minivan
+ford windstar cargo,Van Minivan
 ford zx2,Coupe
-ford windstar passenger,Van/Minivan
-gmc sonoma extended cab,Pickup
-gmc sonoma regular cab,Pickup
+ford windstar,Van Minivan
+gmc sonoma,Pickup
+gmc sonoma,Pickup
 isuzu rodeo sport,SUV
 lexus is,"Hatchback, Sedan"
 mazda protege5,Hatchback
 mazda protege,Sedan
-mercedes benz c class,"Coupe, Sedan, Wagon"
+mercedes c class,"Coupe, Sedan, Wagon"
 nissan 350z,Coupe
 oldsmobile aurora,Sedan
 oldsmobile alero,"Sedan, Coupe"
-volkswagen eurovan,Van/Minivan
+volkswagen eurovan,Van Minivan
 volkswagen new beetle,"Convertible, Hatchback"
 audi s4,"Wagon, Sedan"
 bmw z3,"Convertible, Coupe"
@@ -1229,15 +1229,15 @@ chrysler sebring,"Sedan, Convertible, Coupe"
 daewoo nubira,"Sedan, Wagon"
 daewoo leganza,Sedan
 daewoo lanos,"Sedan, Hatchback"
-ford econoline e250 cargo,Van/Minivan
-ford econoline e350 super duty passenger,Van/Minivan
-dodge ram wagon 2500,Van/Minivan
-ford econoline e150 cargo,Van/Minivan
-ford econoline e150 passenger,Van/Minivan
-dodge ram wagon 1500,Van/Minivan
-ford econoline e350 super duty cargo,Van/Minivan
+ford econoline e250 cargo,Van Minivan
+ford econoline e350 super duty,Van Minivan
+dodge wagon 2500,Van Minivan
+ford econoline e150 cargo,Van Minivan
+ford econoline e150,Van Minivan
+dodge wagon,Van Minivan
+ford econoline e350 super duty cargo,Van Minivan
 ford escort,Sedan
-dodge ram wagon 3500,Van/Minivan
+dodge wagon 3500,Van Minivan
 dodge stratus,"Coupe, Sedan"
 honda civic,"Sedan, Coupe, Hatchback"
 hummer h1,"SUV, Wagon"
@@ -1245,10 +1245,10 @@ isuzu trooper,SUV
 infiniti g,Sedan
 land rover discovery series ii,SUV
 lincoln blackwood,Pickup
-mazda 6,Sedan
+mazda 626,Sedan
 mazda millenia,Sedan
 mitsubishi mirage,Coupe
-mercury villager,Van/Minivan
+mercury villager,Van Minivan
 mercury cougar,Coupe
 oldsmobile intrigue,Sedan
 pontiac grand prix,"Sedan, Coupe"
@@ -1274,7 +1274,7 @@ chevrolet corvette,"Convertible, Coupe, Hatchback"
 chevrolet lumina,Sedan
 daewoo lanos,"Hatchback, Sedan"
 chrysler lhs,Sedan
-dodge ram 1500 club cab,Pickup
+dodge club cab,Pickup
 gmc jimmy,SUV
 honda prelude,Coupe
 hyundai xg300,Sedan
@@ -1296,33 +1296,33 @@ volkswagen passat (new),"Sedan, Wagon"
 audi a4,"Wagon, Sedan"
 acura integra,"Sedan, Hatchback"
 bmw 3 series,"Sedan, Wagon, Convertible, Coupe"
-chevrolet 2500 hd regular cab,Pickup
-chevrolet 2500 crew cab,Pickup
+chevrolet,Pickup
+chevrolet 2500,Pickup
 chevrolet metro,"Hatchback, Sedan"
-chevrolet 2500 hd extended cab,Pickup
-chevrolet 3500 crew cab,Pickup
-chevrolet 3500 extended cab,Pickup
-chevrolet 3500 regular cab,Pickup
+chevrolet,Pickup
+chevrolet 3500,Pickup
+chevrolet 3500,Pickup
+chevrolet 3500,Pickup
 chevrolet tahoe (new),SUV
 chrysler cirrus,Sedan
-chrysler grand voyager,Van/Minivan
+chrysler grand voyager,Van Minivan
 chevrolet cavalier,"Coupe, Sedan, Convertible"
 chrysler sebring,"Coupe, Convertible"
 dodge avenger,Coupe
 ford contour,Sedan
 ford escort,"Sedan, Coupe"
-gmc yukon,SUV
-gmc sierra (classic) 2500 crew cab,Pickup
+gmc yukon denali,SUV
+gmc sierra (classic) 2500,Pickup
 isuzu amigo,SUV
 isuzu hombre spacecab,Pickup
-isuzu hombre regular cab,Pickup
+isuzu hombre,Pickup
 lexus sc,Coupe
 mercury mystique,Sedan
 mercury sable,"Wagon, Sedan"
-plymouth grand voyager,Van/Minivan
+plymouth grand voyager,Van Minivan
 plymouth breeze,Sedan
 pontiac sunfire,"Sedan, Coupe, Convertible"
-plymouth voyager,Van/Minivan
+plymouth voyager,Van Minivan
 plymouth prowler,Convertible
 volvo s70,Sedan
 acura slx,SUV
@@ -1330,26 +1330,26 @@ acura nsx,"Convertible, Coupe"
 volvo c70,"Coupe, Convertible"
 bmw 3 series,"Coupe, Hatchback, Convertible, Sedan"
 buick riviera,Coupe
-chevrolet 1500 extended cab,Pickup
+chevrolet,Pickup
 chevrolet metro,"Coupe, Sedan"
-dodge ram 2500 club cab,Pickup
+dodge 2500 club cab,Pickup
 daewoo nubira,"Wagon, Sedan, Hatchback"
 dodge neon,"Coupe, Sedan"
-ford econoline e350 cargo,Van/Minivan
+ford econoline e350 cargo,Van Minivan
 ford escort,"Sedan, Wagon, Coupe"
-ford f250 regular cab,Pickup
+ford f250,Pickup
 ford f250 super cab,Pickup
-gmc 2500 crew cab,Pickup
-gmc 3500 regular cab,Pickup
-gmc 1500 club coupe,Pickup
-gmc 3500 extended cab,Pickup
-gmc 2500 hd regular cab,Pickup
-gmc 2500 hd extended cab,Pickup
+gmc 2500,Pickup
+gmc 3500,Pickup
+gmc club coupe,Pickup
+gmc 3500,Pickup
+gmc,Pickup
+gmc,Pickup
 honda accord,"Coupe, Sedan"
-gmc 3500 crew cab,Pickup
+gmc 3500,Pickup
 gmc suburban 2500,SUV
-gmc suburban 1500,SUV
-isuzu oasis,Van/Minivan
+gmc suburban,SUV
+isuzu oasis,Van Minivan
 oldsmobile cutlass,Sedan
 mercury tracer,"Sedan, Wagon"
 mitsubishi mirage,"Sedan, Coupe"
@@ -1369,40 +1369,40 @@ bmw m3,"Convertible, Sedan, Coupe"
 audi cabriolet,Convertible
 bmw z3,Convertible
 buick skylark,Sedan
-chevrolet 2500 regular cab,Pickup
-chevrolet g series 1500,Van/Minivan
-chevrolet 1500 regular cab,Pickup
-chevrolet 2500 extended cab,Pickup
-chevrolet g series 3500,Van/Minivan
+chevrolet 2500,Pickup
+chevrolet g series,Van Minivan
+chevrolet,Pickup
+chevrolet 2500,Pickup
+chevrolet g series 3500,Van Minivan
 chevrolet corvette,"Hatchback, Convertible"
 chevrolet cavalier,"Hatchback, Sedan, Convertible"
-chevrolet g series 2500,Van/Minivan
+chevrolet g series 2500,Van Minivan
 chrysler sebring,"Convertible, Coupe"
 dodge neon,"Sedan, Coupe"
-ford club wagon,Van/Minivan
+ford club wagon,Van Minivan
 eagle talon,Hatchback
 ford escort,"Sedan, Coupe, Wagon"
 gmc 2500 club coupe,Pickup
-gmc 2500 regular cab,Pickup
-gmc 1500 regular cab,Pickup
+gmc 2500,Pickup
+gmc,Pickup
 gmc 3500 club coupe,Pickup
 gmc sonoma club coupe cab,Pickup
-gmc 2500 hd club coupe,Pickup
+gmc club coupe,Pickup
 lincoln mark viii,Coupe
-mercedes benz clk class,Coupe
+mercedes clk class,Coupe
 nissan 200sx,Coupe
 nissan 240sx,Coupe
 oldsmobile achieva,Sedan
 oldsmobile regency,Sedan
 suzuki sidekick,SUV
 pontiac sunfire,"Convertible, Sedan, Coupe"
-pontiac trans sport,Van/Minivan
+pontiac trans sport,Van Minivan
 pontiac grand prix,"Coupe, Sedan"
 subaru impreza,"Sedan, Wagon, Coupe"
 toyota supra,Hatchback
 saab 900,"Hatchback, Convertible"
 toyota celica,"Coupe, Hatchback, Convertible"
-toyota t100 regular cab,Pickup
+toyota t100,Pickup
 saab 9000,Hatchback
 suzuki x 90,SUV
 toyota t100 xtracab,Pickup
@@ -1413,16 +1413,16 @@ bmw 8 series,Coupe
 buick skylark,"Sedan, Coupe"
 chevrolet cavalier,"Coupe, Convertible, Sedan"
 chevrolet corvette,Hatchback
-ford aerostar passenger,Van/Minivan
+ford aerostar,Van Minivan
 ford aspire,Hatchback
-dodge ram 3500 club cab,Pickup
-ford aerostar cargo,Van/Minivan
+dodge 3500 club cab,Pickup
+ford aerostar cargo,Van Minivan
 eagle vision,Sedan
 ford probe,Hatchback
 ford escort,"Sedan, Wagon"
-ford f350 crew cab,Pickup
-ford f350 regular cab,Pickup
-ford f250 crew cab,Pickup
+ford f350,Pickup
+ford f350,Pickup
+ford f250,Pickup
 ford f350 super cab,Pickup
 geo metro,"Coupe, Sedan"
 geo prizm,Sedan
@@ -1433,10 +1433,10 @@ honda accord,"Sedan, Wagon, Coupe"
 honda del sol,Coupe
 infiniti j,Sedan
 land rover defender,SUV
-mercedes benz e class,Sedan
+mercedes e class,Sedan
 mercury cougar,Sedan
 mazda mx 6,Coupe
-nissan regular cab,Pickup
+nissan,Pickup
 nissan king cab,Pickup
 oldsmobile cutlass supreme,"Sedan, Coupe"
 suzuki esteem,Sedan
@@ -1449,7 +1449,7 @@ subaru svx,Coupe
 toyota celica,"Hatchback, Coupe, Convertible"
 toyota paseo,"Hatchback, Convertible"
 bmw 3 series,"Hatchback, Coupe, Sedan, Convertible"
-toyota previa,Van/Minivan
+toyota previa,Van Minivan
 volvo 850,"Sedan, Wagon"
 volvo 960,"Sedan, Wagon"
 buick century,"Wagon, Sedan"
@@ -1459,11 +1459,11 @@ bmw m3,Coupe
 buick skylark,"Coupe, Sedan"
 cadillac fleetwood,Sedan
 chevrolet beretta,Coupe
-chevrolet g series g30,Van/Minivan
-chevrolet lumina passenger,Van/Minivan
-chevrolet sportvan g30,Van/Minivan
+chevrolet g series g30,Van Minivan
+chevrolet lumina,Van Minivan
+chevrolet sportvan g30,Van Minivan
 chevrolet corsica,Sedan
-chevrolet lumina cargo,Van/Minivan
+chevrolet lumina cargo,Van Minivan
 chevrolet camaro,"Hatchback, Convertible"
 chevrolet caprice classic,"Sedan, Wagon"
 chevrolet cavalier,"Sedan, Coupe, Convertible"
@@ -1473,10 +1473,10 @@ ford bronco,SUV
 ford escort,"Hatchback, Sedan, Wagon"
 eagle summit,"Sedan, Coupe, Wagon"
 geo metro,"Hatchback, Sedan"
-gmc rally wagon g3500,Van/Minivan
-gmc vandura g3500,Van/Minivan
+gmc rally wagon g3500,Van Minivan
+gmc vandura g3500,Van Minivan
 jaguar xj,"Sedan, Convertible"
-mitsubishi mighty max regular cab,Pickup
+mitsubishi mighty max,Pickup
 mitsubishi 3000gt,"Coupe, Convertible"
 nissan 300zx,"Hatchback, Convertible"
 oldsmobile ciera,"Sedan, Wagon"
@@ -1495,23 +1495,23 @@ bmw 3 series,"Hatchback, Sedan, Coupe, Convertible"
 toyota paseo,Coupe
 audi s6,"Wagon, Sedan"
 buick regal,"Sedan, Coupe"
-chevrolet 3500 hd extended cab,Pickup
-chevrolet g series g20,Van/Minivan
-chevrolet g series g10,Van/Minivan
+chevrolet,Pickup
+chevrolet g series g20,Van Minivan
+chevrolet g series g10,Van Minivan
 chevrolet corvette,"Convertible, Hatchback"
-chevrolet 3500 hd regular cab,Pickup
+chevrolet,Pickup
 chevrolet camaro,"Convertible, Hatchback"
 chrysler lebaron,Convertible
-chevrolet sportvan g20,Van/Minivan
+chevrolet sportvan g20,Van Minivan
 chrysler sebring,Coupe
 eagle summit,"Coupe, Sedan, Wagon"
 dodge spirit,Sedan
 ford escort,"Hatchback, Wagon"
-gmc rally wagon g2500,Van/Minivan
-gmc vandura g2500,Van/Minivan
-gmc vandura g1500,Van/Minivan
+gmc rally wagon g2500,Van Minivan
+gmc vandura g2500,Van Minivan
+gmc vandura g,Van Minivan
 hyundai scoupe,Coupe
-isuzu regular cab,Pickup
+isuzu,Pickup
 jaguar xj,"Sedan, Coupe, Convertible"
 mazda mx 3,Hatchback
 mazda 929,Sedan
@@ -1529,13 +1529,13 @@ porsche 968,"Coupe, Convertible"
 porsche 928,Hatchback
 saab 9000,"Hatchback, Sedan"
 toyota mr2,Hatchback
-toyota regular cab,Pickup
-volkswagen golf,Hatchback
+toyota,Pickup
+volkswagen golf iii,Hatchback
 audi quattro,Sedan
 alfa romeo spider,Convertible
 bmw 3 series,"Sedan, Coupe, Convertible"
 toyota xtra cab,Pickup
-volkswagen jetta,Sedan
+volkswagen jetta iii,Sedan
 buick century,"Sedan, Wagon"
 audi 100,"Wagon, Sedan"
 acura vigor,Sedan
@@ -1544,29 +1544,29 @@ chevrolet cavalier,"Sedan, Coupe, Wagon, Convertible"
 chevrolet lumina,"Sedan, Coupe"
 chevrolet s10 blazer,SUV
 chrysler lebaron,"Sedan, Convertible"
-dodge ram van b250,Van/Minivan
-dodge ram wagon b350,Van/Minivan
+dodge van b250,Van Minivan
+dodge wagon b350,Van Minivan
 dodge colt,Sedan
-dodge ram van b150,Van/Minivan
-dodge ram van b350,Van/Minivan
-dodge ram wagon b150,Van/Minivan
+dodge van b150,Van Minivan
+dodge van b350,Van Minivan
+dodge wagon b150,Van Minivan
 dodge stealth,Coupe
 dodge shadow,Hatchback
-dodge ram wagon b250,Van/Minivan
-gmc rally wagon 2500,Van/Minivan
+dodge wagon b250,Van Minivan
+gmc rally wagon 2500,Van Minivan
 ford tempo,Sedan
 geo metro,Hatchback
-gmc rally wagon 3500,Van/Minivan
-gmc vandura 1500,Van/Minivan
-gmc vandura 3500,Van/Minivan
-gmc vandura 2500,Van/Minivan
+gmc rally wagon 3500,Van Minivan
+gmc vandura,Van Minivan
+gmc vandura 3500,Van Minivan
+gmc vandura 2500,Van Minivan
 honda accord,"Sedan, Coupe, Wagon"
 hyundai excel,"Hatchback, Sedan"
 isuzu spacecab,Pickup
-mazda 3,Hatchback
+mazda 323,Hatchback
 mazda navajo,SUV
 mercury capri,Convertible
-mercedes benz e class,"Coupe, Convertible, Wagon, Sedan"
+mercedes e class,"Coupe, Convertible, Wagon, Sedan"
 mitsubishi mighty max macro cab,Pickup
 mitsubishi precis,Hatchback
 mitsubishi 3000gt,Coupe
@@ -1594,10 +1594,10 @@ buick century,"Sedan, Wagon, Coupe"
 audi 100,"Sedan, Wagon"
 cadillac sixty special,Sedan
 chevrolet camaro,Hatchback
-chevrolet lumina apv,Van/Minivan
-chevrolet sportvan g10,Van/Minivan
+chevrolet lumina apv,Van Minivan
+chevrolet sportvan g10,Van Minivan
 chrysler lebaron,"Coupe, Convertible, Sedan"
-chevrolet apv cargo,Van/Minivan
+chevrolet apv cargo,Van Minivan
 dodge d350 club cab,Pickup
 chrysler fifth ave,Sedan
 chevrolet cavalier,"Coupe, Sedan, Wagon, Convertible"
@@ -1605,40 +1605,40 @@ dodge d250 club cab,Pickup
 dodge colt,"Sedan, Coupe"
 dodge d150 club cab,Pickup
 chrysler imperial,Sedan
-dodge d350 regular cab,Pickup
-dodge d150 regular cab,Pickup
-dodge d250 regular cab,Pickup
+dodge d350,Pickup
+dodge d150,Pickup
+dodge d250,Pickup
 dodge dynasty,Sedan
-dodge ram 50 regular cab,Pickup
+dodge 50,Pickup
 dodge daytona,Hatchback
 dodge shadow,"Hatchback, Convertible"
-dodge ramcharger,SUV
+dodge charger,SUV
 geo metro,"Hatchback, Convertible"
 ford festiva,Hatchback
 ford tempo,"Coupe, Sedan"
 geo storm,Coupe
-gmc rally wagon 1500,Van/Minivan
+gmc rally wagon,Van Minivan
 honda accord,"Coupe, Wagon, Sedan"
 hummer h1,SUV
 isuzu stylus,Sedan
-land rover defender,SUV
-mercedes benz 300 e,Sedan
-mercedes benz 190 e,Sedan
-mercedes benz 300 d,Sedan
-mercedes benz 300 sd,Sedan
-mercedes benz 300 ce,"Coupe, Convertible"
-mercedes benz 500 sel,Sedan
-mercedes benz 400 sel,Sedan
-mercedes benz 500 sl,Convertible
-mercedes benz 500 e,Sedan
-mercedes benz 300 sl,Convertible
-mercedes benz 600 sec,Coupe
-mercedes benz 300 te,Wagon
-mercedes benz 400 e,Sedan
-mercedes benz 300 se,Sedan
-mercedes benz 600 sl,Convertible
-mercedes benz 600 sel,Sedan
-mercedes benz 500 sec,Coupe
+land rover defender 110,SUV
+mercedes 300 e,Sedan
+mercedes 190 e,Sedan
+mercedes 300 d,Sedan
+mercedes 300 sd,Sedan
+mercedes 300 ce,"Coupe, Convertible"
+mercedes 500 sel,Sedan
+mercedes 400 sel,Sedan
+mercedes 500 sl,Convertible
+mercedes 500 e,Sedan
+mercedes 300 sl,Convertible
+mercedes 600 sec,Coupe
+mercedes 300 te,Wagon
+mercedes 400 e,Sedan
+mercedes 300 se,Sedan
+mercedes 600 sl,Convertible
+mercedes 600 sel,Sedan
+mercedes 500 sec,Coupe
 mercury topaz,"Sedan, Coupe"
 nissan sentra,"Coupe, Sedan"
 nissan 240sx,"Hatchback, Coupe, Convertible"
@@ -1679,10 +1679,10 @@ infiniti m,"Coupe, Convertible"
 hyundai excel,"Sedan, Hatchback"
 honda civic,"Hatchback, Sedan"
 isuzu impulse,Hatchback
-jeep comanche regular cab,Pickup
+jeep comanche,Pickup
 lincoln mark vii,Coupe
-mercedes benz 300 ce,Coupe
-mercedes benz 400 se,Sedan
+mercedes 300 ce,Coupe
+mercedes 400 se,Sedan
 mitsubishi mirage,"Hatchback, Sedan"
 nissan 300zx,Hatchback
 nissan stanza,Sedan
@@ -1698,33 +1698,55 @@ toyota cressida,Sedan
 volvo 740,"Wagon, Sedan"
 volkswagen fox,"Sedan, Coupe"
 volvo 240,"Wagon, Sedan"
-audi a6,Wagon
+audi a6 allroad,Wagon
 audi s5,"Convertible,Sedan,Coupe"
-buick encore,SUV
+buick encore gx,SUV
 cadillac ct4,Sedan
 chevrolet corvette,"Convertible,Coupe"
-ford bronco,SUV
-ford transit van,Van/Minivan
+ford bronco sport,SUV
+ford transit connect cargo van,Van Minivan
 ford mustang,"Coupe,Convertible"
 genesis gv80,SUV
 honda civic,"Hatchback,Sedan"
-honda cr v,SUV
+honda cr v hybrid,SUV
 kia k5,Sedan
-jeep grand cherokee,SUV
+jeep grand cherokee l,SUV
 kia rio,"Hatchback,Sedan"
 kia seltos,SUV
 lexus lc,"Coupe,Convertible"
-mazda mazda3,"Hatchback,Sedan"
-mercedes benz c class,Coupe
-mercedes benz glb,SUV
-porsche 718,Convertible
+mazda 3,"Hatchback,Sedan"
+mercedes c class,Coupe
+mercedes glb,SUV
+porsche 718 spyder,Convertible
 polestar 2,Hatchback
 porsche 911,"Coupe,Convertible"
 subaru impreza,"Wagon,Sedan"
 rivian r1s,SUV
 rivian r1t,Pickup
-toyota rav4,SUV
-volkswagen atlas,SUV
-gmc hummer ev,Pickup
+toyota rav4 prime,SUV
+volkswagen atlas cross sport,SUV
+gmc ev,Pickup
 jeep grand wagoneer,SUV
 honda civic,Sedan
+nissan qashqai,SUV
+ram pickup,Pickup
+mercedes benz citan,Van/Minivan
+tesla model y,SUV
+audi e tron gt,Sedan
+ford maverick,Pickup
+genesis gv70,SUV
+hyundai santa cruz,SUV
+infiniti qx55,SUV
+jeep wagoneer,SUV
+kia carnival,Minivan
+mazda mx 30,SUV
+toyota corolla cross,SUV
+volkswagen id.4,SUV
+volkswagen taos,SUV
+nissan micra,Hatchback
+toyota corolla cross,SUV
+nissan micra,Hatchback
+chrysler grand caravan,Minivan
+ford mustang mach e,SUV
+hyundai ioniq 5,SUV
+mercedes citan,Van

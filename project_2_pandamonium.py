@@ -248,8 +248,6 @@ sold will be placed in a car body category'''
 car_models = pd.read_csv("Car_Model_List.csv")
 missing_car_models = pd.read_csv("missing_models.csv")
 
-car_models = pd.concat([car_models, missing_car_models], axis=0)
-
 months_for_analysis = ['January 2019', 'February 2019', 'March 2019', 'April 2019', 'May 2019', 'June 2019',
                        'July 2019', 'August 2019', 'September 2019', 'October 2019', 'November 2019', 'December 2019',
                        'January 2020', 'February 2020', 'March 2020', 'April 2020', 'May 2020', 'June 2020',
@@ -257,7 +255,7 @@ months_for_analysis = ['January 2019', 'February 2019', 'March 2019', 'April 201
                        'January 2021', 'February 2021', 'March 2021', 'April 2021', 'May 2021', 'June 2021',
                        'July 2021', 'August 2021', 'September 2021', 'October 2021', 'November 2021', 'December 2021']
 
-def make_and_model_canonicalization(car_sales, car_models):
+def make_and_model_canonicalization(car_sales, car_models,missing_car_models):
     '''Canonicalizes car_sales such that the elements in the make_and_model column of both dataframes matches
         input:
         car_sales --> A dataframe containing monthly car sales for different makes and models
@@ -267,56 +265,68 @@ def make_and_model_canonicalization(car_sales, car_models):
         car_models dataset with modified strings in the make_and_model column to match the car_sales column canonicalization
         car_sales dataset with modified strings in the make_and_model column to match the car_models column canonicalization
         '''
-
+    car_make_list = car_models["Make"].astype(str).str.lower().str.replace("-benz","").unique().tolist()
     # Creating a single column for make and model, to match the format of the car_sales column
-    car_models["make_and_model"] = car_models["Make"].astype(str).str.lower() + " " + car_models["Model"].astype(str).str.lower()
+    car_models["make_and_model"] = car_models["Make"].astype(str).str.lower() + " " + car_models["Model"].astype(str).str.lower().replace(car_make_list," ",regex=True)
 
     # Removing duplicates since the same make and model is present for multiple years in the car_models dataframe
-    car_models = car_models.loc[:, ["make_and_model", "Category"]].drop_duplicates().apply(lambda x: x.replace({"-":" ",
-                                                                                                                "benz":" ",
-                                                                                                                "bolt ev":"bolt",
-                                                                                                                "class":" ",
-                                                                                                                "passenger":" ",
-                                                                                                                "crew cab":" ",
-                                                                                                                "extended cab":" ",
-                                                                                                                "regular cab":" ",
-                                                                                                                "1500 double cab":" ",
-                                                                                                                "2500 hd double cab": " ",
-                                                                                                                "2500 hd": " ",
-                                                                                                                "3500 hd": " ",
-                                                                                                                "1500":" ",
-                                                                                                                "fuel cell":"fcv",
-                                                                                                                "plug in hybrid":" "},regex=True))
+    car_models = car_models.loc[:, ["make_and_model", "Category"]].drop_duplicates().apply(lambda x: x.replace("-"," ",regex=True)
+                                                                                           .replace("/"," ",regex=True)
+                                                                                           .replace("benz"," ",regex=True)
+                                                                                           .replace("bolt ev","bolt",regex=True)
+                                                                                           .replace("passenger"," ",regex=True)
+                                                                                           .replace("crew cab"," ",regex=True)
+                                                                                           .replace("extended cab"," ",regex=True)
+                                                                                           .replace("regular cab"," ",regex=True)
+                                                                                           .replace("1500 double cab"," ",regex=True)
+                                                                                           .replace("2500 hd double cab"," ",regex=True)
+                                                                                           .replace("2500 cargo"," ",regex=True)
+                                                                                           .replace("2500 hd"," ",regex=True)
+                                                                                           .replace("3500 hd"," ",regex=True)
+                                                                                           .replace("1500"," ",regex=True)
+                                                                                           .replace("fuel cell","fcv",regex=True)
+                                                                                           .replace("electric"," ",regex=True)
+                                                                                           .replace("boxster"," ",regex=True)
+                                                                                           .replace("defender 90","defender",regex=True)
+                                                                                           .replace("slc class","slc",regex=True))
     car_models["make_and_model"] = car_models["make_and_model"] \
         .apply(lambda x: x[:12] if ("ford transit" in x and "ford transit connect" not in x) else x)\
         .apply(lambda x: "ford f series" if "ford f150" in x else x)\
         .apply(lambda x: "ford e series" if "ford e350" in x else x)
 
     car_sales["make_and_model"] = car_sales["make_and_model"].str.lower()
-    car_sales = car_sales.apply(lambda x: x.replace({"-":" ",
-                                                     "benz":" ",
-                                                     "class":" ",
-                                                     "etron":"e tron",
-                                                     "tuscon":"tucson",
-                                                     "mazda 3":"mazda mazda3",
-                                                     "mazda 6":"mazda mazda6"},regex=True))
+    car_models["Category"] = car_models["Category"].replace("1992","",regex=True).replace("2020","",regex=True)
+
+    car_sales = car_sales.apply(lambda x: x.replace("-", " ",regex=True)
+                                .replace("/", " ",regex=True)
+                                .replace("lr4"," ",regex=True)
+                                .replace("wrx"," ",regex=True)
+                                .replace("fr s"," ",regex=True)
+                                .replace("benz"," ",regex=True)
+                                .replace("etron","e tron",regex=True)
+                                .replace("tuscon","tucson",regex=True)
+                                .replace("mazda3","mazda 3",regex=True)
+                                .replace("mazda6","mazda 6",regex=True)
+                                .replace("nautilus"," ",regex=True)
+                                .replace("90 series","xc90",regex=True)
+                                .replace("60 series","xc60",regex=True)
+                                .replace("40 series","xc40",regex=True)
+                                .replace("pickup"," ",regex=True)
+                                .replace("family"," ",regex=True)
+                                .replace("glk class"," ",regex=True)
+                                .replace("gl gls class","gls",regex=True)
+                                .replace("gle class","gle",regex=True)
+                                .replace("slc class","slc",regex=True)
+                                .replace("mercedes e cls class","mercedes e class",regex=True))
 
     car_sales["make_and_model"] = car_sales["make_and_model"].apply(lambda x:' '.join(x.split()))
     car_models["make_and_model"] = car_models["make_and_model"].apply(lambda x:' '.join(x.split()))
-
-    '''
-    #Canonicalizing make_and_model for car_sales and car_models
-    for index_sales,row_sales in car_sales.iterrows():
-        for index_models,row_models in car_models.iterrows():
-            if row_sales["make_and_model"] in row_models["make_and_model"]:
-                car_models["make_and_model"] = car_models["make_and_model"].str.\
-                    replace(row_models["make_and_model"],row_sales["make_and_model"])
-    '''
+    car_models = pd.concat([car_models, missing_car_models], axis=0)
 
     return car_sales,car_models
 
 #Merging car_sales and car_models by make and model
-car_sales, car_models = make_and_model_canonicalization(car_sales, car_models)
+car_sales, car_models = make_and_model_canonicalization(car_sales, car_models,missing_car_models)
 car_sales_by_size = car_sales.merge(right=car_models,
                                     how='outer',
                                     on='make_and_model')
@@ -331,12 +341,16 @@ missing_cars = (car_sales_by_size[car_sales_by_size["Category"].isnull()])["make
 print("Car bodies with null values: \n", missing_cars)
 print("Number of car bodies with null values: ", len(missing_cars))
 print("Car models list:\n", car_models["make_and_model"].to_list())
-#print("GoodCarBadCar Models:",car_sales_list)
 
 
 car_models.to_csv('Car_Model_List_updated.csv', encoding='utf-8', index=False)
 car_sales.to_csv('Car_Sales_2019_2021.csv', encoding='utf-8', index=False)
 car_sales_by_size.to_csv('Merged Car Sales List.csv', encoding='utf-8', index=False)
+
+small_cars=["Coupe","Hatchback","Convertible"]
+midsize_cars=["SUV","Sedan","Wagon"]
+large_cars=["Pickup","Van","Minivan"]
+
 
 
 
