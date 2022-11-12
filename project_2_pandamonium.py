@@ -375,9 +375,9 @@ car_size_category = car_sales_by_size.groupby('Category').agg(sum)
 monthly_sums = list(car_sales_by_size.sum(axis = 0)[1:-1])
 
 #calculate % of each size per month
-car_size_category = ((car_size_category/monthly_sums)*100).T.rename(columns={"small": "%_small",
-                                                                       "midsize": "%_midsize",
-                                                                       "large": "%_large"})
+car_size_category = (car_size_category/monthly_sums).T.rename(columns={"small": "prop_small",
+                                                                       "midsize": "prop_midsize",
+                                                                       "large": "prop_large"})
 
 ##sanity check
 #car_size_category['total'] = list(car_size_category.sum(axis = 1))
@@ -416,15 +416,26 @@ transit_ridership.index = transit_ridership.reset_index()['REF_DATE'].apply(lamb
 #transit_ridership.to_csv('monthly_transit_ridership_2019-2021_updated.csv', encoding='utf-8', index=False)
 
 #merging all dataframes into using datetime indices
-total_table = pd.concat([car_size_category,employment_stats,oil_prices,transit_ridership], axis=1).reset_index()
+total_table = pd.concat([car_size_category,employment_stats,oil_prices,transit_ridership], axis=1)
 total_table.to_csv('Merged Total Table.csv', encoding='utf-8', index=False)
 
 #####################################################################################################################
 
+#Limiting table to independent variables for analysis and excluding pandemic dates from the beginning of the pandemic
+#in March 2020 until December 2020, when there was a 0% change in Canadian GDP and after which GDP stabilized.
+#https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020009-eng.htm
+pandemic_dates = pd.to_datetime(["2020-03-01","2020-04-01","2020-05-01","2020-06-01","2020-07-01","2020-08-01"
+                                    ,"2020-09-01","2020-10-01","2020-11-01"])
+table_for_data_analysis = total_table.drop(pandemic_dates).reset_index().loc[:,["index","prop_large","prop_midsize"
+                                                                                   ,"prop_small","Population"
+                                                                                   ,"Employment","Full-time employment"
+                                                                                   ,"Part-time employment","avg_oil_price"
+                                                                                   ,"transit_ridership"]]
+
 #Scatter plot of the purchases of small, midsize, and large vehicles
-ax = sns.scatterplot(total_table, x="index", y="%_small", label="Small cars")
-ax = sns.scatterplot(total_table, x="index", y="%_midsize", label="Midsize cars")
-ax = sns.scatterplot(total_table, x="index", y="%_large", label="Large cars")
+ax = sns.scatterplot(table_for_data_analysis, x="index", y="prop_small", label="Small cars")
+ax = sns.scatterplot(table_for_data_analysis, x="index", y="prop_midsize", label="Midsize cars")
+ax = sns.scatterplot(table_for_data_analysis, x="index", y="prop_large", label="Large cars")
 plt.title('Purchases of Vehicles in Canada by Size January 2019 - December 2021', fontsize = 18)
 ax.tick_params(axis='x', rotation=90)
 #ax.xaxis.set_tick_params(labelsize = 14)
@@ -435,23 +446,36 @@ ax.set_ylabel('Car Sizes Purchased (%)', fontsize = 18)
 ax.legend()
 plt.show()
 
-#Scatterplot of oil prices
-ax = sns.scatterplot(total_table, x="index", y="avg_oil_price", label="Oil price")
-plt.title('Average Oil Prices in Canada January 2019 - December 2021', fontsize = 18)
-ax.tick_params(axis='x', rotation=90)
+#Jointplots of oil prices, employment, population, and transit ridership with regards to vehicle sizes purchased
+ax = sns.jointplot(table_for_data_analysis[["avg_oil_price","prop_large"]], x="avg_oil_price", y="prop_large", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["Employment","prop_large"]], x="Employment", y="prop_large", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["Full-time employment","prop_large"]], x="Full-time employment", y="prop_large", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["Part-time employment","prop_large"]], x="Part-time employment", y="prop_large", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["transit_ridership","prop_large"]], x="transit_ridership", kind="reg", y="prop_large")
+
+ax = sns.jointplot(table_for_data_analysis[["avg_oil_price","prop_midsize"]], x="avg_oil_price", y="prop_midsize", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["Employment","prop_midsize"]], x="Employment", y="prop_midsize", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["Full-time employment","prop_midsize"]], x="Full-time employment", y="prop_midsize", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["Part-time employment","prop_midsize"]], x="Part-time employment", y="prop_midsize", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["transit_ridership","prop_midsize"]], x="transit_ridership", y="prop_midsize", kind="reg")
+
+ax = sns.jointplot(table_for_data_analysis[["avg_oil_price","prop_small"]], x="avg_oil_price", y="prop_small", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["Employment","prop_small"]], x="Employment", y="prop_small", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["Full-time employment","prop_small"]], x="Full-time employment", y="prop_small", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["Part-time employment","prop_small"]], x="Part-time employment", y="prop_small", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["transit_ridership","prop_small"]], x="transit_ridership", y="prop_small", kind="reg")
 plt.show()
 
-#Scatterplot of employment
-ax = sns.scatterplot(total_table, x="index", y="Employment", label="Employment")
-plt.title('Employment in Canada January 2019 - December 2021', fontsize = 18)
-ax.tick_params(axis='x', rotation=90)
+#Check for potential outliers
+print(round(table_for_data_analysis.describe(),2))
+print(table_for_data_analysis.isnull().sum())
+
+#Checking correlation between variables
+correlation=table_for_data_analysis.corr()
+plt.figure(figsize=(18,12))
+plt.title('Correlation Heatmap of Vehicle Sales in Canada Dataset')
+ax = sns.heatmap(correlation, square=True, annot=True, fmt='.2f', linecolor='white')
+ax.set_xticklabels(ax.get_xticklabels(), rotation=90)
+ax.set_yticklabels(ax.get_yticklabels(), rotation=30)
 plt.show()
 
-#Scatterplot of transit ridership
-ax = sns.scatterplot(total_table, x="index", y="transit_ridership", label="Transit Ridership")
-plt.title('Transit Ridership in Canada January 2019 - December 2021', fontsize = 18)
-ax.tick_params(axis='x', rotation=90)
-plt.show()
-
-ax = sns.jointplot(total_table[["avg_oil_price","%_large"]], x="avg_oil_price", y="%_large")
-plt.show()
