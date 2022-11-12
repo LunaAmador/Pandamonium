@@ -6,6 +6,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
 from datetime import datetime
+from sklearn.model_selection import train_test_split
+from sklearn.model_selection import KFold
+from sklearn.base import clone
+from sklearn.preprocessing import MinMaxScaler
 
 # Configure Notebook
 import warnings
@@ -77,11 +81,11 @@ for row in table_rows_2019:
     december.append(int(dec_sum.replace(',','')))
 
 # make dataframe containing with columns corresponding to the lists
-car_sales_2019 = pd.DataFrame({'make_and_model': model_names, 'January 2019': january,
-                          'February 2019': february, 'March 2019': march,'April 2019': april,
-                          'May 2019':may, 'June 2019':june, 'July 2019':july,'August 2019':august,
-                          'September 2019': september, 'October 2019': october,
-                          'November 2019': november,'December 2019': december}).replace("-"," ")
+car_sales_2019 = pd.DataFrame({'make_and_model': model_names, '2019-01-01': january,
+                          '2019-02-01': february, '2019-03-01': march,'2019-04-01': april,
+                          '2019-05-01':may, '2019-06-01':june, '2019-07-01':july,'2019-08-01':august,
+                          '2019-09-01': september, '2019-10-01': october,
+                          '2019-11-01': november,'2019-12-01': december}).replace("-"," ")
 
 #monthly_sums_2019 = list(car_sales_2019.sum(axis = 0)[1:])
 
@@ -150,11 +154,11 @@ for row in table_rows_2020:
     december.append(int(dec_sum.replace(',','')))
 
 # make dataframe containing with columns corresponding to the lists
-car_sales_2020 = pd.DataFrame({'make_and_model': model_names, 'January 2020': january,
-                          'February 2020': february, 'March 2020': march,'April 2020': april,
-                          'May 2020':may, 'June 2020':june, 'July 2020':july,'August 2020':august,
-                          'September 2020': september, 'October 2020': october,
-                          'November 2020': november,'December 2020': december}).replace("-"," ")
+car_sales_2020 = pd.DataFrame({'make_and_model': model_names,'2020-01-01': january,
+                          '2020-02-01': february, '2020-03-01': march,'2020-04-01': april,
+                          '2020-05-01':may, '2020-06-01':june, '2020-07-01':july,'2020-08-01':august,
+                          '2020-09-01': september, '2020-10-01': october,
+                          '2020-11-01': november,'2020-12-01': december}).replace("-"," ")
 
 #monthly_sums_2020 = list(car_sales_2020.sum(axis = 0)[1:])
 
@@ -223,11 +227,11 @@ for row in table_rows_2021:
     december.append(int(dec_sum.replace(',','')))
 
 # make dataframe containing with columns corresponding to the lists
-car_sales_2021 = pd.DataFrame({'make_and_model': model_names, 'January 2021': january,
-                          'February 2021': february, 'March 2021': march,'April 2021': april,
-                          'May 2021':may, 'June 2021':june, 'July 2021':july,'August 2021':august,
-                          'September 2021': september, 'October 2021': october,
-                          'November 2021': november,'December 2021': december})
+car_sales_2021 = pd.DataFrame({'make_and_model': model_names, '2021-01-01': january,
+                          '2021-02-01': february, '2021-03-01': march,'2021-04-01': april,
+                          '2021-05-01':may, '2021-06-01':june, '2021-07-01':july,'2021-08-01':august,
+                          '2021-09-01': september, '2021-10-01': october,
+                          '2021-11-01': november,'2021-12-01': december})
 
 #monthly_sums_2021 = list(car_sales_2021.sum(axis = 0)[1:])
 
@@ -249,12 +253,12 @@ sold will be placed in a car body category'''
 car_models = pd.read_csv("Car_Model_List.csv")
 missing_car_models = pd.read_csv("missing_models.csv")
 
-months_for_analysis = ['January 2019', 'February 2019', 'March 2019', 'April 2019', 'May 2019', 'June 2019',
-                       'July 2019', 'August 2019', 'September 2019', 'October 2019', 'November 2019', 'December 2019',
-                       'January 2020', 'February 2020', 'March 2020', 'April 2020', 'May 2020', 'June 2020',
-                       'July 2020', 'August 2020', 'September 2020', 'October 2020', 'November 2020', 'December 2020',
-                       'January 2021', 'February 2021', 'March 2021', 'April 2021', 'May 2021', 'June 2021',
-                       'July 2021', 'August 2021', 'September 2021', 'October 2021', 'November 2021', 'December 2021']
+months_for_analysis = ['2019-01-01', '2019-02-01', '2019-03-01', '2019-04-01', '2019-05-01', '2019-06-01','2019-07-01',
+                       '2019-08-01', '2019-09-01', '2019-10-01', '2019-11-01', '2019-12-01',
+                       '2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01', '2020-05-01', '2020-06-01', '2020-07-01',
+                       '2020-08-01', '2020-09-01', '2020-10-01', '2020-11-01', '2020-12-01',
+                       '2021-01-01', '2021-02-01', '2021-03-01', '2021-04-01', '2021-05-01', '2021-06-01', '2021-07-01',
+                       '2021-08-01', '2021-09-01', '2021-10-01', '2021-11-01', '2021-12-01']
 
 def make_and_model_canonicalization(car_sales, car_models,missing_car_models):
     '''Canonicalizes car_sales such that the elements in the make_and_model column of both dataframes matches
@@ -354,6 +358,9 @@ car_sales_by_size.to_csv('Merged Car Sales List.csv', encoding='utf-8', index=Fa
 
 #print(car_sales_by_size['Category'].unique())
 
+#####################################################################################################################
+#Now combining all the data into one table
+
 #categorizing all combinations of car size category
 small_cars=["Coupe","Hatchback","Convertible",'Convertible, Sedan','Coupe, Sedan, Convertible',
             'Coupe, Convertible','Convertible, Sedan, Coupe','Sedan, Hatchback','Hatchback, Sedan',
@@ -384,7 +391,8 @@ car_size_category = (car_size_category/monthly_sums).T.rename(columns={"small": 
 #print(car_size_category)
 
 #convert to datetime index full month name and full year
-car_size_category.index = car_size_category.reset_index()['index'].apply(lambda x: datetime.strptime(x,"%B %Y"))
+#car_size_category.index = car_size_category.reset_index()['index'].apply(lambda x: datetime.strptime(x,"%B %Y"))
+car_size_category.index = pd.to_datetime(car_size_category.reset_index()['index'])
 
 #create a column for monthly sums
 car_size_category['total_sum'] = monthly_sums
@@ -468,6 +476,8 @@ plt.show()
 
 #Check for potential outliers
 print(round(table_for_data_analysis.describe(),2))
+
+#Checking for null values
 print(table_for_data_analysis.isnull().sum())
 
 #Checking correlation between variables
@@ -479,3 +489,109 @@ ax.set_xticklabels(ax.get_xticklabels(), rotation=90)
 ax.set_yticklabels(ax.get_yticklabels(), rotation=30)
 plt.show()
 
+#####################################################################################################################
+#Since populations and transit ridership were highly correlated, these will not be included in our model
+
+#Splitting data into train, test, and validate
+train, test = train_test_split(table_for_data_analysis, test_size=0.30, random_state=0)
+test, val = train_test_split(test, test_size=0.50, random_state=0)
+
+#Verify that data was split correctly
+print('Train {}%'.format(train.shape[0] / table_for_data_analysis.shape[0] * 100))
+print('Val {}%'.format(val.shape[0] / table_for_data_analysis.shape[0] * 100))
+print('Test {}%'.format(test.shape[0] / table_for_data_analysis.shape[0] * 100))
+
+def select_columns(data, *columns):
+    """Select only columns passed as arguments."""
+    return data.loc[:, columns]
+
+def process_data(data):
+    """Process the data for the guided model, which will predict the proportion of small, midsize, and
+    large vehicles sold in Canada.
+        Input: data --> dataframe with x and y values
+        Output: X --> explanatory variables
+                y1 --> proportion of small vehicles purchased
+                y2 --> proportion of midsize vehicles purchased
+                y3 --> proportion of large vehicles purchased
+    """
+    # Transform Data, Select Features
+    data = select_columns(data,
+                          'avg_oil_price',
+                          'Full-time employment',
+                          'Part-time employment',
+                          'Employment',
+                          'transit_ridership',
+                          'prop_small',
+                          'prop_midsize',
+                          'prop_large')
+
+    # Return predictors and response variables separately
+    X = data.drop(['prop_small','prop_midsize','prop_large'], axis=1)
+    y_small = data.loc[:, 'prop_small']
+    y_midsize = data.loc[:, 'prop_midsize']
+    y_large = data.loc[:, 'prop_large']
+
+    return X, y_small, y_midsize, y_large
+
+#Separating data into training, validation, and test datasets
+X_train, y_train_small, y_train_midsize, y_train_large = process_data(train)
+X_val, y_val_small, y_val_midsize, y_val_large = process_data(val)
+X_test, y_test_small, y_test_midsize, y_test_large = process_data(test)
+
+#Scaling variables based on minimum and maximum values
+cols = X_train.columns
+scaler = MinMaxScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+X_train = pd.DataFrame(X_train, columns = cols)
+X_test = pd.DataFrame(X_test, columns = cols)
+
+#Training linear regression models for small, midsize, and large vehicle sales
+linear_model_small = LinearRegression(fit_intercept=True)
+linear_model_midsize = LinearRegression(fit_intercept=True)
+linear_model_large = LinearRegression(fit_intercept=True)
+
+linear_model_small.fit(X_train, y_train_small)
+linear_model_midsize.fit(X_train, y_train_midsize)
+linear_model_large.fit(X_train, y_train_large)
+
+y_fitted_small = linear_model_small.predict(X_train)
+y_fitted_midsize = linear_model_midsize.predict(X_train)
+y_fitted_large = linear_model_large.predict(X_train)
+
+y_predicted_small = linear_model_small.predict(X_val)
+y_predicted_midsize = linear_model_small.predict(X_val)
+y_predicted_large = linear_model_small.predict(X_val)
+
+#Calculating root mean squared error for the predictive model
+def rmse(actual, predicted):
+    """
+    Calculates RMSE from actual and predicted values
+    Input:  actual (1D array) --> vector of actual values
+            predicted (1D array) --> vector of predicted/fitted values
+    Output:
+      The root-mean square error of the input data, as a float
+    """
+
+    return ((((actual - predicted) ** 2).sum()) / len(actual)) ** 0.5
+
+#Calculating error for each model
+training_error_small = rmse(y_train_small,y_fitted_small)
+training_error_midsize = rmse(y_train_midsize,y_fitted_midsize)
+training_error_large = rmse(y_train_large,y_fitted_large)
+
+val_error_small = rmse(y_val_small,y_predicted_small)
+val_error_midsize = rmse(y_val_midsize,y_predicted_midsize)
+val_error_large = rmse(y_val_large,y_predicted_large)
+
+# Printing calculated error values for the training and validation sets of the three models
+print('Training RMSE for small cars model: ${}'.format(training_error_small))
+print('Training RMSE for midsize cars model: ${}'.format(training_error_midsize))
+print('Training RMSE for large cars model: ${}'.format(training_error_large))
+
+print('Validation RMSE for small cars model: ${}'.format(val_error_small))
+print('Validation RMSE for midsize cars model: ${}'.format(val_error_midsize))
+print('Validation RMSE for large cars model: ${}'.format(val_error_large))
+
+#Cross validation RMSE
