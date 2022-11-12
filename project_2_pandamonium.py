@@ -419,7 +419,9 @@ transit_ridership.index = transit_ridership.reset_index()['REF_DATE'].apply(lamb
 total_table = pd.concat([car_size_category,employment_stats,oil_prices,transit_ridership], axis=1).reset_index()
 total_table.to_csv('Merged Total Table.csv', encoding='utf-8', index=False)
 
-#Creating scatter plot of the purchases of small, midsize, and large vehicles
+#####################################################################################################################
+
+#Scatter plot of the purchases of small, midsize, and large vehicles
 ax = sns.scatterplot(total_table, x="index", y="%_small", label="Small cars")
 ax = sns.scatterplot(total_table, x="index", y="%_midsize", label="Midsize cars")
 ax = sns.scatterplot(total_table, x="index", y="%_large", label="Large cars")
@@ -433,7 +435,23 @@ ax.set_ylabel('Car Sizes Purchased (%)', fontsize = 18)
 ax.legend()
 plt.show()
 
+#Scatterplot of oil prices
 ax = sns.scatterplot(total_table, x="index", y="avg_oil_price", label="Oil price")
 plt.title('Average Oil Prices in Canada January 2019 - December 2021', fontsize = 18)
 ax.tick_params(axis='x', rotation=90)
+plt.show()
+
+#Scatterplot of employment
+ax = sns.scatterplot(total_table, x="index", y="Employment", label="Employment")
+plt.title('Employment in Canada January 2019 - December 2021', fontsize = 18)
+ax.tick_params(axis='x', rotation=90)
+plt.show()
+
+#Scatterplot of transit ridership
+ax = sns.scatterplot(total_table, x="index", y="transit_ridership", label="Transit Ridership")
+plt.title('Transit Ridership in Canada January 2019 - December 2021', fontsize = 18)
+ax.tick_params(axis='x', rotation=90)
+plt.show()
+
+ax = sns.jointplot(total_table[["avg_oil_price","%_large"]], x="avg_oil_price", y="%_large")
 plt.show()
