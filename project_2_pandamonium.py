@@ -320,6 +320,7 @@ def make_and_model_canonicalization(car_sales, car_models,missing_car_models):
                                 .replace("slc class","slc",regex=True)
                                 .replace("e   cls class","cls",regex=True))
 
+    #Removing additional spaces in the strings in the male_and_model column
     car_sales["make_and_model"] = car_sales["make_and_model"].apply(lambda x:' '.join(x.split()))
     car_models["make_and_model"] = car_models["make_and_model"].apply(lambda x:' '.join(x.split()))
     car_models = pd.concat([car_models, missing_car_models], axis=0)
@@ -339,11 +340,12 @@ car_sales_by_size = car_sales_by_size[~car_sales_by_size[months_for_analysis].is
 car_sales_by_size = car_sales_by_size.drop_duplicates(['make_and_model'])
 
 #DEBUGGING: Finding null category values
-car_sales_list = car_sales["make_and_model"].to_list()
-missing_cars = (car_sales_by_size[car_sales_by_size["Category"].isnull()])["make_and_model"].to_list()
-print("Car bodies with null values: \n", missing_cars)
-print("Number of car bodies with null values: ", len(missing_cars))
-print("Car models list:\n", car_models["make_and_model"].to_list())
+#car_sales_list = car_sales["make_and_model"].to_list()
+#missing_cars = (car_sales_by_size[car_sales_by_size["Category"].isnull()])["make_and_model"].to_list()
+#print("Car bodies with null values: \n", missing_cars)
+#print("Number of car bodies with null values: ", len(missing_cars))
+#print("Car models list:\n", car_models["make_and_model"].to_list())
+
 
 #put car model, car sales, and merged car sales list  to csv
 car_models.to_csv('Car_Model_List_updated.csv', encoding='utf-8', index=False)
@@ -373,7 +375,7 @@ car_size_category = car_sales_by_size.groupby('Category').agg(sum)
 monthly_sums = list(car_sales_by_size.sum(axis = 0)[1:-1])
 
 #calculate % of each size per month
-car_size_category = (car_size_category/monthly_sums).T.rename(columns={"small": "%_small",
+car_size_category = ((car_size_category/monthly_sums)*100).T.rename(columns={"small": "%_small",
                                                                        "midsize": "%_midsize",
                                                                        "large": "%_large"})
 
@@ -414,5 +416,24 @@ transit_ridership.index = transit_ridership.reset_index()['REF_DATE'].apply(lamb
 #transit_ridership.to_csv('monthly_transit_ridership_2019-2021_updated.csv', encoding='utf-8', index=False)
 
 #merging all dataframes into using datetime indices
-total_table = pd.concat([car_size_category,employment_stats,oil_prices,transit_ridership], axis=1)
+total_table = pd.concat([car_size_category,employment_stats,oil_prices,transit_ridership], axis=1).reset_index()
 total_table.to_csv('Merged Total Table.csv', encoding='utf-8', index=False)
+
+#Creating scatter plot of the purchases of small, midsize, and large vehicles
+ax = sns.scatterplot(total_table, x="index", y="%_small", label="Small cars")
+ax = sns.scatterplot(total_table, x="index", y="%_midsize", label="Midsize cars")
+ax = sns.scatterplot(total_table, x="index", y="%_large", label="Large cars")
+plt.title('Purchases of Vehicles in Canada by Size January 2019 - December 2021', fontsize = 18)
+ax.tick_params(axis='x', rotation=90)
+#ax.xaxis.set_tick_params(labelsize = 14)
+ax.yaxis.set_tick_params(labelsize = 14)
+ax.set_ylim(0,100)
+ax.set_xlabel('Date', fontsize = 18)
+ax.set_ylabel('Car Sizes Purchased (%)', fontsize = 18)
+ax.legend()
+plt.show()
+
+ax = sns.scatterplot(total_table, x="index", y="avg_oil_price", label="Oil price")
+plt.title('Average Oil Prices in Canada January 2019 - December 2021', fontsize = 18)
+ax.tick_params(axis='x', rotation=90)
+plt.show()
