@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
 from datetime import datetime
 from sklearn.model_selection import train_test_split
+from sklearn import linear_model as lm
 from sklearn.model_selection import KFold
 from sklearn.base import clone
 from sklearn.preprocessing import MinMaxScaler
@@ -433,7 +434,9 @@ total_table.to_csv('Merged Total Table.csv', encoding='utf-8', index=False)
 #in March 2020 until December 2020, when there was a 0% change in Canadian GDP and after which GDP stabilized.
 #https://www150.statcan.gc.ca/n1/pub/71-607-x/71-607-x2020009-eng.htm
 pandemic_dates = pd.to_datetime(["2020-03-01","2020-04-01","2020-05-01","2020-06-01","2020-07-01","2020-08-01"
-                                    ,"2020-09-01","2020-10-01","2020-11-01"])
+                                    ,"2020-09-01","2020-10-01","2020-11-01","2020-12-01","2021-01-01","2021-02-01",
+                                 "2021-03-01","2021-04-01","2021-05-01","2021-06-01","2021-07-01","2021-08-01"
+                                    ,"2021-09-01","2021-10-01","2021-11-01","2021-12-01"])
 table_for_data_analysis = total_table.drop(pandemic_dates).reset_index().loc[:,["index","prop_large","prop_midsize"
                                                                                    ,"prop_small","Population"
                                                                                    ,"Employment","Full-time employment"
@@ -446,6 +449,7 @@ ax = sns.scatterplot(table_for_data_analysis, x="index", y="prop_midsize", label
 ax = sns.scatterplot(table_for_data_analysis, x="index", y="prop_large", label="Large cars")
 plt.title('Purchases of Vehicles in Canada by Size January 2019 - December 2021', fontsize = 18)
 ax.tick_params(axis='x', rotation=90)
+
 #ax.xaxis.set_tick_params(labelsize = 14)
 ax.yaxis.set_tick_params(labelsize = 14)
 ax.set_ylim(0,100)
@@ -548,9 +552,9 @@ X_train = pd.DataFrame(X_train, columns = cols)
 X_test = pd.DataFrame(X_test, columns = cols)
 
 #Training linear regression models for small, midsize, and large vehicle sales
-linear_model_small = LinearRegression(fit_intercept=True)
-linear_model_midsize = LinearRegression(fit_intercept=True)
-linear_model_large = LinearRegression(fit_intercept=True)
+linear_model_small = lm.LinearRegression(fit_intercept=True)
+linear_model_midsize = lm.LinearRegression(fit_intercept=True)
+linear_model_large = lm.LinearRegression(fit_intercept=True)
 
 linear_model_small.fit(X_train, y_train_small)
 linear_model_midsize.fit(X_train, y_train_midsize)
