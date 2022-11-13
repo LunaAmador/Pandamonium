@@ -400,13 +400,14 @@ car_size_category['total_sum'] = monthly_sums
 
 car_size_category.to_csv('%_category.csv', encoding='utf-8', index=False)
 
-#monthly employment stats units corrected and datetime index set
+#monthly employment stats units corrected (x1000) and datetime index set
 employment_stats = pd.read_csv("monthly_employment_stats_2019-2021.csv").set_index('Labour force characteristics')\
     .T.astype(str).replace(',','',regex = True).astype(float)
 employment_stats.index = employment_stats.reset_index()['index'].apply(lambda x: datetime.strptime(x,"%b-%y"))
 
 employment_stats[['Unemployment rate','Participation rate','Employment rate']]= employment_stats[['Unemployment rate','Participation rate','Employment rate']]/100
-employment_stats[employment_stats.columns.difference(['Unemployment rate','Participation rate','Employment rate'])]=employment_stats[employment_stats.columns.difference(['Unemployment rate','Participation rate','Employment rate'])]*1000
+employment_stats[employment_stats.columns.difference(['Unemployment rate','Participation rate','Employment rate'])]\
+    =employment_stats[employment_stats.columns.difference(['Unemployment rate','Participation rate','Employment rate'])]*1000
 
 #employment_stats.to_csv('monthly_employment_stats_2019-2021_updated.csv', encoding='utf-8', index=False)
 
@@ -417,7 +418,7 @@ oil_prices.index = oil_prices.reset_index()['REF_DATE'].apply(lambda x: datetime
 
 #oil_prices.to_csv('monthly_oil_prices_2019-2021_updated.csv', encoding='utf-8', index=False)
 
-#monthly transit ridership units corrected and datetime index set
+#monthly transit ridership units corrected (x1 mill) and datetime index set
 transit_ridership = pd.read_csv("monthly_transit_ridership_2019-2021.csv").rename(columns={"VALUE": "transit_ridership"})\
                         .set_index('REF_DATE').loc[:,'transit_ridership'].astype(float)*1000000
 transit_ridership.index = transit_ridership.reset_index()['REF_DATE'].apply(lambda x: datetime.strptime(x,"%b-%y"))
@@ -451,9 +452,9 @@ pandemic_dates = pd.to_datetime(["2020-03-01","2020-04-01","2020-05-01","2020-06
                                     ,"2021-09-01","2021-10-01","2021-11-01","2021-12-01"])
 table_for_data_analysis = total_table.drop(pandemic_dates).reset_index().loc[:,["index","prop_large","prop_midsize"
                                                                                    ,"prop_small","Population"
-                                                                                   ,"Employment","Full-time employment"
-                                                                                   ,"Part-time employment","avg_oil_price"
-                                                                                   ,"transit_ridership","dollar_ex_rate"]]
+                                                                                   ,"Employment rate","Full-time employment"
+                                                                                   ,"Part-time employment","avg_oil_price","transit_ridership"
+                                                                                   ,"dollar_ex_rate"]]
 
 #Scatter plot of the purchases of small, midsize, and large vehicles
 ax = sns.scatterplot(table_for_data_analysis, x="index", y="prop_small", label="Small cars")
@@ -466,27 +467,27 @@ ax.tick_params(axis='x', rotation=90)
 ax.yaxis.set_tick_params(labelsize = 14)
 ax.set_ylim(0,1)
 ax.set_xlabel('Date', fontsize = 18)
-ax.set_ylabel('Car Sizes Purchased (%)', fontsize = 18)
+ax.set_ylabel('Proportion of Car Sizes Purchased', fontsize = 18)
 ax.legend()
 plt.show()
 
 #Jointplots of oil prices, employment, population, and transit ridership with regards to vehicle sizes purchased
 ax = sns.jointplot(table_for_data_analysis[["avg_oil_price","prop_large"]], x="avg_oil_price", y="prop_large", kind="reg")
-ax = sns.jointplot(table_for_data_analysis[["Employment","prop_large"]], x="Employment", y="prop_large", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["Employment rate","prop_large"]], x="Employment rate", y="prop_large", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Full-time employment","prop_large"]], x="Full-time employment", y="prop_large", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Part-time employment","prop_large"]], x="Part-time employment", y="prop_large", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["transit_ridership","prop_large"]], x="transit_ridership", kind="reg", y="prop_large")
 ax = sns.jointplot(table_for_data_analysis[["dollar_ex_rate","prop_large"]], x="dollar_ex_rate", kind="reg", y="prop_large")
 
 ax = sns.jointplot(table_for_data_analysis[["avg_oil_price","prop_midsize"]], x="avg_oil_price", y="prop_midsize", kind="reg")
-ax = sns.jointplot(table_for_data_analysis[["Employment","prop_midsize"]], x="Employment", y="prop_midsize", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["Employment rate","prop_midsize"]], x="Employment rate", y="prop_midsize", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Full-time employment","prop_midsize"]], x="Full-time employment", y="prop_midsize", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Part-time employment","prop_midsize"]], x="Part-time employment", y="prop_midsize", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["transit_ridership","prop_midsize"]], x="transit_ridership", y="prop_midsize", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["dollar_ex_rate","prop_midsize"]], x="dollar_ex_rate", y="prop_midsize", kind="reg")
 
 ax = sns.jointplot(table_for_data_analysis[["avg_oil_price","prop_small"]], x="avg_oil_price", y="prop_small", kind="reg")
-ax = sns.jointplot(table_for_data_analysis[["Employment","prop_small"]], x="Employment", y="prop_small", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["Employment rate","prop_small"]], x="Employment rate", y="prop_small", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Full-time employment","prop_small"]], x="Full-time employment", y="prop_small", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Part-time employment","prop_small"]], x="Part-time employment", y="prop_small", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["transit_ridership","prop_small"]], x="transit_ridership", y="prop_small", kind="reg")
@@ -540,7 +541,7 @@ def process_data(data):
                           'Full-time employment',
                           'Part-time employment',
                           'dollar_ex_rate',
-                          'Employment',
+                          'Employment rate',
                           'transit_ridership',
                           'prop_small',
                           'prop_midsize',
