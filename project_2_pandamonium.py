@@ -306,7 +306,7 @@ def make_and_model_canonicalization(car_sales, car_models,missing_car_models):
     car_sales = car_sales.apply(lambda x: x.replace("-", " ",regex=True)
                                 .replace("/", " ",regex=True)
                                 .replace("lr4"," ",regex=True)
-                                .replace("impreza wrx","wrx ",regex=True)
+                                .replace("impreza wrx","wrx",regex=True)
                                 .replace("fr s"," ",regex=True)
                                 .replace("benz"," ",regex=True)
                                 .replace("etron","e tron",regex=True)
@@ -424,8 +424,14 @@ transit_ridership.index = transit_ridership.reset_index()['REF_DATE'].apply(lamb
 
 #transit_ridership.to_csv('monthly_transit_ridership_2019-2021_updated.csv', encoding='utf-8', index=False)
 
+#monthly dollar exchange rate USD-CAD datetime index set
+der_usd_cad = pd.read_csv("monthly_der_2019-2021.csv").rename(columns={"FXMUSDCAD": "dollar_ex_rate"})\
+                        .set_index('date').loc[:,'dollar_ex_rate'].astype(float)
+der_usd_cad.index = der_usd_cad.reset_index()['date'].apply(lambda x: datetime.strptime(x,"%Y-%m-%d"))
+#print(der_usd_cad)
+
 #merging all dataframes into using datetime indices
-total_table = pd.concat([car_size_category,employment_stats,oil_prices,transit_ridership], axis=1)
+total_table = pd.concat([car_size_category,employment_stats,oil_prices,transit_ridership,der_usd_cad], axis=1)
 total_table.to_csv('Merged Total Table.csv', encoding='utf-8', index=False)
 
 #####################################################################################################################
@@ -441,7 +447,7 @@ table_for_data_analysis = total_table.drop(pandemic_dates).reset_index().loc[:,[
                                                                                    ,"prop_small","Population"
                                                                                    ,"Employment","Full-time employment"
                                                                                    ,"Part-time employment","avg_oil_price"
-                                                                                   ,"transit_ridership"]]
+                                                                                   ,"transit_ridership","dollar_ex_rate"]]
 
 #Scatter plot of the purchases of small, midsize, and large vehicles
 ax = sns.scatterplot(table_for_data_analysis, x="index", y="prop_small", label="Small cars")
@@ -452,7 +458,7 @@ ax.tick_params(axis='x', rotation=90)
 
 #ax.xaxis.set_tick_params(labelsize = 14)
 ax.yaxis.set_tick_params(labelsize = 14)
-ax.set_ylim(0,100)
+ax.set_ylim(0,1)
 ax.set_xlabel('Date', fontsize = 18)
 ax.set_ylabel('Car Sizes Purchased (%)', fontsize = 18)
 ax.legend()
@@ -464,18 +470,22 @@ ax = sns.jointplot(table_for_data_analysis[["Employment","prop_large"]], x="Empl
 ax = sns.jointplot(table_for_data_analysis[["Full-time employment","prop_large"]], x="Full-time employment", y="prop_large", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Part-time employment","prop_large"]], x="Part-time employment", y="prop_large", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["transit_ridership","prop_large"]], x="transit_ridership", kind="reg", y="prop_large")
+ax = sns.jointplot(table_for_data_analysis[["dollar_ex_rate","prop_large"]], x="dollar_ex_rate", kind="reg", y="prop_large")
 
 ax = sns.jointplot(table_for_data_analysis[["avg_oil_price","prop_midsize"]], x="avg_oil_price", y="prop_midsize", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Employment","prop_midsize"]], x="Employment", y="prop_midsize", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Full-time employment","prop_midsize"]], x="Full-time employment", y="prop_midsize", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Part-time employment","prop_midsize"]], x="Part-time employment", y="prop_midsize", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["transit_ridership","prop_midsize"]], x="transit_ridership", y="prop_midsize", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["dollar_ex_rate","prop_midsize"]], x="dollar_ex_rate", y="prop_midsize", kind="reg")
 
 ax = sns.jointplot(table_for_data_analysis[["avg_oil_price","prop_small"]], x="avg_oil_price", y="prop_small", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Employment","prop_small"]], x="Employment", y="prop_small", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Full-time employment","prop_small"]], x="Full-time employment", y="prop_small", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Part-time employment","prop_small"]], x="Part-time employment", y="prop_small", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["transit_ridership","prop_small"]], x="transit_ridership", y="prop_small", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["dollar_ex_rate","prop_small"]], x="dollar_ex_rate", y="prop_small", kind="reg")
+
 plt.show()
 
 #Check for potential outliers
@@ -523,6 +533,7 @@ def process_data(data):
                           'avg_oil_price',
                           'Full-time employment',
                           'Part-time employment',
+                          'dollar_ex_rate',
                           'Employment',
                           'transit_ridership',
                           'prop_small',
