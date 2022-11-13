@@ -424,14 +424,20 @@ transit_ridership.index = transit_ridership.reset_index()['REF_DATE'].apply(lamb
 
 #transit_ridership.to_csv('monthly_transit_ridership_2019-2021_updated.csv', encoding='utf-8', index=False)
 
-#monthly dollar exchange rate USD-CAD datetime index set
+#monthly dollar exchange rate (USD-CAD) datetime index set
 der_usd_cad = pd.read_csv("monthly_der_2019-2021.csv").rename(columns={"FXMUSDCAD": "dollar_ex_rate"})\
                         .set_index('date').loc[:,'dollar_ex_rate'].astype(float)
 der_usd_cad.index = der_usd_cad.reset_index()['date'].apply(lambda x: datetime.strptime(x,"%Y-%m-%d"))
 #print(der_usd_cad)
 
+#monthly gdp (in 2012 dollars) units correct and datetime index set
+gdp = pd.read_csv("monthly_oil_prices_2019-2021.csv").rename(columns={"VALUE": "gdp"})\
+                 .set_index('REF_DATE').loc[:,'gdp'].astype(float)*1000000
+gdp.index = gdp.reset_index()['REF_DATE'].apply(lambda x: datetime.strptime(x,"%b-%y"))
+
 #merging all dataframes into using datetime indices
-total_table = pd.concat([car_size_category,employment_stats,oil_prices,transit_ridership,der_usd_cad], axis=1)
+total_table = pd.concat([car_size_category,employment_stats,oil_prices,transit_ridership,\
+                         der_usd_cad,gdp], axis=1)
 total_table.to_csv('Merged Total Table.csv', encoding='utf-8', index=False)
 
 #####################################################################################################################
@@ -447,7 +453,8 @@ table_for_data_analysis = total_table.drop(pandemic_dates).reset_index().loc[:,[
                                                                                    ,"prop_small","Population"
                                                                                    ,"Employment","Full-time employment"
                                                                                    ,"Part-time employment","avg_oil_price"
-                                                                                   ,"transit_ridership","dollar_ex_rate"]]
+                                                                                   ,"transit_ridership","dollar_ex_rate",
+                                                                                "gdp"]]
 
 #Scatter plot of the purchases of small, midsize, and large vehicles
 ax = sns.scatterplot(table_for_data_analysis, x="index", y="prop_small", label="Small cars")
@@ -471,6 +478,7 @@ ax = sns.jointplot(table_for_data_analysis[["Full-time employment","prop_large"]
 ax = sns.jointplot(table_for_data_analysis[["Part-time employment","prop_large"]], x="Part-time employment", y="prop_large", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["transit_ridership","prop_large"]], x="transit_ridership", kind="reg", y="prop_large")
 ax = sns.jointplot(table_for_data_analysis[["dollar_ex_rate","prop_large"]], x="dollar_ex_rate", kind="reg", y="prop_large")
+ax = sns.jointplot(table_for_data_analysis[["gdp","prop_large"]], x="gdp", kind="reg", y="prop_large")
 
 ax = sns.jointplot(table_for_data_analysis[["avg_oil_price","prop_midsize"]], x="avg_oil_price", y="prop_midsize", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Employment","prop_midsize"]], x="Employment", y="prop_midsize", kind="reg")
@@ -478,6 +486,7 @@ ax = sns.jointplot(table_for_data_analysis[["Full-time employment","prop_midsize
 ax = sns.jointplot(table_for_data_analysis[["Part-time employment","prop_midsize"]], x="Part-time employment", y="prop_midsize", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["transit_ridership","prop_midsize"]], x="transit_ridership", y="prop_midsize", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["dollar_ex_rate","prop_midsize"]], x="dollar_ex_rate", y="prop_midsize", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["gdp","prop_midsize"]], x="gdp", y="prop_midsize", kind="reg")
 
 ax = sns.jointplot(table_for_data_analysis[["avg_oil_price","prop_small"]], x="avg_oil_price", y="prop_small", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["Employment","prop_small"]], x="Employment", y="prop_small", kind="reg")
@@ -485,6 +494,7 @@ ax = sns.jointplot(table_for_data_analysis[["Full-time employment","prop_small"]
 ax = sns.jointplot(table_for_data_analysis[["Part-time employment","prop_small"]], x="Part-time employment", y="prop_small", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["transit_ridership","prop_small"]], x="transit_ridership", y="prop_small", kind="reg")
 ax = sns.jointplot(table_for_data_analysis[["dollar_ex_rate","prop_small"]], x="dollar_ex_rate", y="prop_small", kind="reg")
+ax = sns.jointplot(table_for_data_analysis[["gdp","prop_small"]], x="gdp", y="prop_small", kind="reg")
 
 plt.show()
 
@@ -534,6 +544,7 @@ def process_data(data):
                           'Full-time employment',
                           'Part-time employment',
                           'dollar_ex_rate',
+                          'gdp',
                           'Employment',
                           'transit_ridership',
                           'prop_small',
@@ -601,12 +612,45 @@ val_error_midsize = rmse(y_val_midsize,y_predicted_midsize)
 val_error_large = rmse(y_val_large,y_predicted_large)
 
 # Printing calculated error values for the training and validation sets of the three models
-print('Training RMSE for small cars model: ${}'.format(training_error_small))
-print('Training RMSE for midsize cars model: ${}'.format(training_error_midsize))
-print('Training RMSE for large cars model: ${}'.format(training_error_large))
+print('Training RMSE for small cars model: {} cars'.format(training_error_small))
+print('Training RMSE for midsize cars model: {} cars'.format(training_error_midsize))
+print('Training RMSE for large cars model: {} cars'.format(training_error_large))
 
-print('Validation RMSE for small cars model: ${}'.format(val_error_small))
-print('Validation RMSE for midsize cars model: ${}'.format(val_error_midsize))
-print('Validation RMSE for large cars model: ${}'.format(val_error_large))
+print('Validation RMSE for small cars model: {} cars'.format(val_error_small))
+print('Validation RMSE for midsize cars model: {} cars'.format(val_error_midsize))
+print('Validation RMSE for large cars model: {} cars'.format(val_error_large))
+print('\n')
+def cross_validate_rmse(model, X, y):
+    # Setup
+    model = clone(model)
+    five_fold = KFold(n_splits=5)
+    rmse_values = []
 
-#Cross validation RMSE
+    # Iterature thought cv-folds
+    for train_index, val_index in five_fold.split(X):
+        X_train, y_train = np.array(X)[train_index], np.array(y)[train_index]
+        X_test, y_test = np.array(X)[val_index], np.array(y)[val_index]
+
+        model.fit(X_train, y_train)
+        predicted = model.predict(X_test)
+
+        # Append RMSE scores
+        rmse_values.append(rmse(y_test, predicted))
+    return rmse_values
+
+cv_scores_small = cross_validate_rmse(model=lm.LinearRegression(fit_intercept=True), X=X_train, y=y_train_small)
+cv_scores_midsize = cross_validate_rmse(model=lm.LinearRegression(fit_intercept=True), X=X_train, y=y_train_midsize)
+cv_scores_large = cross_validate_rmse(model=lm.LinearRegression(fit_intercept=True), X=X_train, y=y_train_large)
+
+# Print cv scores
+print('Cross-validation RMSE scores for small cars model: {}'.format(cv_scores_small))
+print('Cross-validation RMSE scores mean for small cars model: {} cars'.format(np.mean(cv_scores_small)))
+print('Cross-validation RMSE scores std for small cars model: {} cars'.format(np.std(cv_scores_small)))
+print('\n')
+print('Cross-validation RMSE scores for midsize cars model: {}'.format(cv_scores_midsize))
+print('Cross-validation RMSE scores mean for midsize cars model: {} cars'.format(np.mean(cv_scores_midsize)))
+print('Cross-validation RMSE scores std for midsize cars model: {} cars'.format(np.std(cv_scores_midsize)))
+print('\n')
+print('Cross-validation RMSE scores for large cars model: {}'.format(cv_scores_large))
+print('Cross-validation RMSE scores mean for large cars model: {} cars'.format(np.mean(cv_scores_large)))
+print('Cross-validation RMSE scores std for large cars model: {} cars'.format(np.std(cv_scores_large)))
