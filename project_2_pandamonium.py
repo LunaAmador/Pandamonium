@@ -395,8 +395,9 @@ car_size_category = (car_size_category/monthly_sums).T.rename(columns={"small": 
 #car_size_category.index = car_size_category.reset_index()['index'].apply(lambda x: datetime.strptime(x,"%B %Y"))
 car_size_category.index = pd.to_datetime(car_size_category.reset_index()['index'])
 
+'''scale it down by 1000000s'''
 #create a column for monthly sums
-car_size_category['total_sum'] = monthly_sums
+car_size_category['total_sum'] = pd.array(monthly_sums)/1000000
 
 car_size_category.to_csv('%_category.csv', encoding='utf-8', index=False)
 
@@ -407,7 +408,7 @@ employment_stats.index = employment_stats.reset_index()['index'].apply(lambda x:
 
 employment_stats[['Unemployment rate','Participation rate','Employment rate']]= employment_stats[['Unemployment rate','Participation rate','Employment rate']]/100
 employment_stats[employment_stats.columns.difference(['Unemployment rate','Participation rate','Employment rate'])]\
-    =employment_stats[employment_stats.columns.difference(['Unemployment rate','Participation rate','Employment rate'])]*1000
+    =employment_stats[employment_stats.columns.difference(['Unemployment rate','Participation rate','Employment rate'])]/1000
 
 #employment_stats.to_csv('monthly_employment_stats_2019-2021_updated.csv', encoding='utf-8', index=False)
 
@@ -420,7 +421,7 @@ oil_prices.index = oil_prices.reset_index()['REF_DATE'].apply(lambda x: datetime
 
 #monthly transit ridership units corrected (x1 mill) and datetime index set
 transit_ridership = pd.read_csv("monthly_transit_ridership_2019-2021.csv").rename(columns={"VALUE": "transit_ridership"})\
-                        .set_index('REF_DATE').loc[:,'transit_ridership'].astype(float)*1000000
+                        .set_index('REF_DATE').loc[:,'transit_ridership'].astype(float)
 transit_ridership.index = transit_ridership.reset_index()['REF_DATE'].apply(lambda x: datetime.strptime(x,"%b-%y"))
 
 #transit_ridership.to_csv('monthly_transit_ridership_2019-2021_updated.csv', encoding='utf-8', index=False)
