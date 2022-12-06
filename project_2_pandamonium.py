@@ -251,8 +251,8 @@ car_sales = car_sales_2019.merge(right = car_sales_2020,
 '''This section of the code will merge the car_sales data with the car_models data, such that every car make and model
 sold will be placed in a car body category'''
 #Car model csv file
-car_models = pd.read_csv("Car_Model_List.csv")
-missing_car_models = pd.read_csv("missing_models.csv")
+car_models = pd.read_csv("Data CSVs/Car_Model_List.csv")
+missing_car_models = pd.read_csv("Data CSVs/missing_models.csv")
 
 months_for_analysis = ['2019-01-01', '2019-02-01', '2019-03-01', '2019-04-01', '2019-05-01', '2019-06-01','2019-07-01',
                        '2019-08-01', '2019-09-01', '2019-10-01', '2019-11-01', '2019-12-01',
@@ -401,7 +401,8 @@ car_size_category['total_sum'] = monthly_sums
 car_size_category.to_csv('%_category.csv', encoding='utf-8', index=False)
 
 #monthly employment stats units corrected (x1000) and datetime index set
-employment_stats = pd.read_csv("monthly_employment_stats_2019-2021.csv").set_index('Labour force characteristics')\
+employment_stats = pd.read_csv(
+    "Data CSVs/monthly_employment_stats_2019-2021.csv").set_index('Labour force characteristics')\
     .T.astype(str).replace(',','',regex = True).astype(float)
 employment_stats.index = employment_stats.reset_index()['index'].apply(lambda x: datetime.strptime(x,"%b-%y"))
 
@@ -412,27 +413,27 @@ employment_stats[employment_stats.columns.difference(['Unemployment rate','Parti
 #employment_stats.to_csv('monthly_employment_stats_2019-2021_updated.csv', encoding='utf-8', index=False)
 
 #monthly oil prices units corrected (cents to dollars) and datetime index set
-oil_prices = pd.read_csv("monthly_oil_prices_2019-2021.csv").rename(columns={"VALUE": "avg_oil_price"})\
+oil_prices = pd.read_csv("Data CSVs/monthly_oil_prices_2019-2021.csv").rename(columns={"VALUE": "avg_oil_price"})\
                  .set_index('REF_DATE').loc[:,'avg_oil_price'].astype(float)/100
 oil_prices.index = oil_prices.reset_index()['REF_DATE'].apply(lambda x: datetime.strptime(x,"%b-%y"))
 
 #oil_prices.to_csv('monthly_oil_prices_2019-2021_updated.csv', encoding='utf-8', index=False)
 
 #monthly transit ridership units corrected (x1 mill) and datetime index set
-transit_ridership = pd.read_csv("monthly_transit_ridership_2019-2021.csv").rename(columns={"VALUE": "transit_ridership"})\
+transit_ridership = pd.read_csv("Data CSVs/monthly_transit_ridership_2019-2021.csv").rename(columns={"VALUE": "transit_ridership"})\
                         .set_index('REF_DATE').loc[:,'transit_ridership'].astype(float)*1000000
 transit_ridership.index = transit_ridership.reset_index()['REF_DATE'].apply(lambda x: datetime.strptime(x,"%b-%y"))
 
 #transit_ridership.to_csv('monthly_transit_ridership_2019-2021_updated.csv', encoding='utf-8', index=False)
 
 #monthly dollar exchange rate (USD-CAD) datetime index set
-der_usd_cad = pd.read_csv("monthly_der_2019-2021.csv").rename(columns={"FXMUSDCAD": "dollar_ex_rate"})\
+der_usd_cad = pd.read_csv("Data CSVs/monthly_der_2019-2021.csv").rename(columns={"FXMUSDCAD": "dollar_ex_rate"})\
                         .set_index('date').loc[:,'dollar_ex_rate'].astype(float)
 der_usd_cad.index = der_usd_cad.reset_index()['date'].apply(lambda x: datetime.strptime(x,"%Y-%m-%d"))
 #print(der_usd_cad)
 
 #monthly gdp (in 2012 dollars) units correct and datetime index set
-gdp = pd.read_csv("monthly_oil_prices_2019-2021.csv").rename(columns={"VALUE": "gdp"})\
+gdp = pd.read_csv("Data CSVs/monthly_oil_prices_2019-2021.csv").rename(columns={"VALUE": "gdp"})\
                  .set_index('REF_DATE').loc[:,'gdp'].astype(float)*1000000
 gdp.index = gdp.reset_index()['REF_DATE'].apply(lambda x: datetime.strptime(x,"%b-%y"))
 
@@ -521,7 +522,7 @@ test, val = train_test_split(test, test_size=0.50, random_state=0)
 #Verify that data was split correctly
 print('Train {}%'.format(train.shape[0] / table_for_data_analysis.shape[0] * 100))
 print('Val {}%'.format(val.shape[0] / table_for_data_analysis.shape[0] * 100))
-print('Test {}%'.format(test.shape[0] / table_for_data_analysis.shape[0] * 100))
+print('Data CSVs {}%'.format(test.shape[0] / table_for_data_analysis.shape[0] * 100))
 
 def select_columns(data, *columns):
     """Select only columns passed as arguments."""
